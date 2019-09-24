@@ -120,6 +120,18 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="coach.h" />
+    <ClInclude Include="coach_player.h" />
+    <ClInclude Include="fixture.h" />
+    <ClInclude Include="league.h" />
+    <ClInclude Include="manager.h" />
+    <ClInclude Include="match.h" />
+    <ClInclude Include="person.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="referee.h" />
+    <ClInclude Include="team.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
