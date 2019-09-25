@@ -9,7 +9,7 @@ Person::Person(const char* name, int age, const char* nationality)
 	strcpy(this->nationality, nationality);
 }
 
-void Person::show() const 
+void Person::show() const
 {
 
 }
