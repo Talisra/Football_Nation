@@ -1,5 +1,6 @@
 #ifndef __PERSON_H
 #define __PERSON_H
+#include <iostream>
 const int NAME_SIZE = 30;
 class Person
 {
