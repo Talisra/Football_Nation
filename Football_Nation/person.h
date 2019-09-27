@@ -13,7 +13,7 @@ protected:
 	~Person();
 
 public:
-	Person(const char * name, int age, const char* nationality);
+	Person(const char* name, int age, const char* nationality);
 	void show() const;
 
 	char* getName() const;
