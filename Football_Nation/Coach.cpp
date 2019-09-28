@@ -4,7 +4,7 @@ Coach::Coach(const char* name, int age, const char* nationality, Team::Role type
 	Person(name, age, nationality)
 {
 	this->type = type;
-	this->currentTeam = currentTeam;
+	setTeam(currentTeam);
 }
 
 void Coach::show() const
@@ -20,5 +20,19 @@ Coach::~Coach()
 Team::Role Coach::getType() const {return type; }
 Team* Coach::getCurrentTeam() const {return currentTeam;}
 
-void setType(Team::Role type);
-void setTeam(Team* team);   //sh
+void Coach::setType(Team::Role type)
+{
+	this->type = type;
+}
+
+void Coach::setTeam(Team* team) 
+{
+	if (currentTeam != team)
+	{
+		currentTeam = team;
+		if (currentTeam != nullptr)
+		{
+			currentTeam->setCoach(this);  // add setCoach to team
+		}
+	}
+}

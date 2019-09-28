@@ -20,7 +20,7 @@ public:
 	Team* getCurrentTeam() const;
 
 	void setType(Team::Role type);
-	void setTeam(Team* team);   //should this be const? unsure
+	void setTeam(Team* team);   //should this be const? unsure. should this be bool?
 
 	
 
