@@ -14,14 +14,20 @@ public:
 		Team::Role type = (Team::Role) 0 ,
 		Team* currentTeam = nullptr);
 	~Coach();
+
 	void show() const;
-	void setTeam(Team * team);
+	Team::Role getType() const;
+	Team* getCurrentTeam() const;
+
+	void setType(Team::Role type);
+	void setTeam(Team* team);   //should this be const? unsure
+
 	
 
 protected:
 	Team::Role type;
 	Team* currentTeam;
-	Coach(const Coach& other);
+	Coach(const Coach& other) = delete;
 
 };
 

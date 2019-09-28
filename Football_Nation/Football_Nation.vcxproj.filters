@@ -30,6 +30,9 @@
     <ClCompile Include="Referee.cpp">
       <Filter>Source Files\Header Implementations</Filter>
     </ClCompile>
+    <ClCompile Include="Coach.cpp">
+      <Filter>Source Files\Header Implementations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="coach.h">
