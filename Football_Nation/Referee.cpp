@@ -19,6 +19,7 @@ void Referee::setGamesPlayed(int games)
 {
 	this->gamesPlayed = games;
 }
+
 void Referee::setRating()
 {
 	int arr[6] = {3, 10, 50, 100, 300, 1000};
