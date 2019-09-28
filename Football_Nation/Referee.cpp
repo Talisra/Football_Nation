@@ -3,8 +3,8 @@
 Referee::Referee(const char* name, int age, const char* nationality, int rating = 0, int gamesPlayed = 0):
 	Person(name,age,nationality)
 {
-	this->rating = rating;
 	this->gamesPlayed = gamesPlayed;
+	setRating();
 }
 
 void Referee::show() const
@@ -23,10 +23,12 @@ void Referee::setRating()
 {
 	int arr[6] = {3, 10, 50, 100, 300, 1000};
 	int determineRating = getGamesPlayed();
-	arr[6] = determineRating;
-	//arr.sort();
+	int counter = 0;
 
-	//switch
+	while (determineRating >= arr[counter]) 
+	{
+		counter = counter + 1;
+	}
 
-	//TODO
+	this->rating = rating;
 }
