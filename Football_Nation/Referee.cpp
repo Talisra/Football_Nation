@@ -21,7 +21,7 @@ void Referee::setGamesPlayed(int games)
 }
 void Referee::setRating()
 {
-	int arr[6] = {10, 50, 100, 300, 1000};
+	int arr[6] = {3, 10, 50, 100, 300, 1000};
 	int determineRating = getGamesPlayed();
 	arr[6] = determineRating;
 	//arr.sort();
