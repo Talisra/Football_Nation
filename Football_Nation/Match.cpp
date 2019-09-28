@@ -36,5 +36,6 @@ Referee* Match::getReferee() const
 
 int Match::getResult() const //TODO 
 {
-	return 0;
+	int i = 100;
+	return i;
 }
