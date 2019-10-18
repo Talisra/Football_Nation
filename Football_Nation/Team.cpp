@@ -36,37 +36,6 @@ void Team::addPlayer(Player* player)
 	}
 }
 
-bool Team::fillBench(Player* player)
-{
-	for (int i = 0; i < benchSize; i++)
-	{
-		if (benchPlayers[i] = nullptr)
-		{
-			benchPlayers[i] = player;
-			return true;
-		}
-	}
-	return false;
-}
-
-void Team::removePlayer(int index)
-{
-	if (index < LINEUP_SIZE && index >=0) // removes the player at the desired index and aligns the lineup array to the left.
-	{
-		lineup[index] = nullptr;
-		for (int i = index; i < LINEUP_SIZE; i++)
-		{
-			lineup[index] = lineup[index + 1];
-		}
-		lineup[LINEUP_SIZE] = nullptr;
-		currentLineup--;
-	}
-	else if (index > LINEUP_SIZE)
-	{
-		benchPlayers[index-LINEUP_SIZE] = nullptr;
-	}
-	// if the code comes here it supposed to throw an exception.
-}
 
 void Team::addToLineup(int index)
 {
@@ -80,10 +49,47 @@ void Team::addToLineup(int index)
 	// if the code comes here it supposed to throw an exception.
 }
 
-void Team::removeFromLineup(int index)
+void Team::removePlayer(Player* player)
 {
-	
+	if (player == nullptr)
+		return;
+
+	for (int i = 0; i < currentLineup; i++)
+	{
+		if (lineup[i] == player)
+		{
+			lineup[i] = nullptr;
+			alignLineup(i);
+			currentLineup--;
+		}
+	}
+	for (int i = 0; i < benchSize; i++)
+	{
+		if (benchPlayers[i] == player)
+		{
+			benchPlayers[i] = nullptr;
+		}
+	}
 }
+
+
+void Team::removeFromLineup(Player* player)
+{
+	if (player == nullptr)
+		return;
+
+	for (int i = 0; i < currentLineup; i++)
+	{
+		if (lineup[i] == player)
+		{
+			lineup[i] = nullptr;
+			alignLineup(i);
+			currentLineup--;
+		}
+	}
+	addPlayer(player);
+}
+
 
 void Team::setManager(Manager* manager)
 {
@@ -92,6 +98,14 @@ void Team::setManager(Manager* manager)
 
 void Team::addCoach(Coach* coach)
 {
+	for (int i = 0; i < coachesSize ; i++)
+	{
+		if (coaches[i] == coach)
+			return;
+	}
+	if (coach == nullptr)
+		return;
+	coach->setTeam(nullptr);
 	if (!fillCoach(coach))
 	{
 		Coach** tempArray = new Coach*[coachesSize * 2];
@@ -107,6 +121,34 @@ void Team::addCoach(Coach* coach)
 	coach->setTeam(this);
 }
 
+void Team::removeCoach(Coach* coach)
+{
+	if (coach == nullptr)
+		return;
+	for (int i = 0; i < coachesSize; i++)
+	{
+		if (coaches[i] == coach)
+		{
+			coaches[i]->setTeam(nullptr);
+			coaches[i] = nullptr;
+			coachesSize--;
+		}
+	}
+}
+
+bool Team::fillBench(Player* player)
+{
+	for (int i = 0; i < benchSize; i++)
+	{
+		if (benchPlayers[i] = nullptr)
+		{
+			benchPlayers[i] = player;
+			return true;
+		}
+	}
+	return false;
+}
+
 bool Team::fillCoach(Coach* coach)
 {
 	for (int i = 0; i < coachesSize; i++)
@@ -118,4 +160,13 @@ bool Team::fillCoach(Coach* coach)
 		}
 	}
 	return false;
+}
+
+void Team::alignLineup(int starting_index)
+{
+	for (int i = starting_index; i < LINEUP_SIZE; i++)
+	{
+		lineup[i] = lineup[i + 1];
+	}
+	lineup[LINEUP_SIZE] = nullptr;
 }
