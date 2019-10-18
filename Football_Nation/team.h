@@ -30,9 +30,10 @@ public:
 	void setManager(Manager * manger); 
 	void addCoach(Coach * coach);
 	void addPlayer(Player * player);
-	void removePlayer(int index); //index starts from 0 until LINEUP_SIZE-1. any index that is larger from LINEUP_SIZE-1 will be checked in the bench players.
+	void removePlayer(Player* Player); 
+	void removeCoach(Coach* coach);
 	void addToLineup(int index); //this will add the indexed player from the bench to the lineup. (will remove the indexed player from the bench).
-	void removeFromLineup(int index); //this will remove the player from the lineup to the bench.
+	void removeFromLineup(Player* player); //this will remove the player from the lineup to the bench. index between 0 to LINEUP_SIZE-1.
 	//NOTE: ^^ this function will not return a feedback if the index is already a nullptr
 	Team operator+(int points) const; //TODO - might not be const 'cause it changes the class
 	bool operator >=(const Team& otherTeam) const; //Team is bigger if team have more point
@@ -40,6 +41,7 @@ public:
 private:
 	bool fillBench(Player* player); //try to fill a player in the bench. returns true if there is a room, and false if the bench is currenty full. an outside function will extend the bench array.
 	bool fillCoach(Coach* coach); //exactly like the bench filler but for coaches
+	void alignLineup(int strating_index); //Function to align the lineup array to the left, after removing a player.
 	char* name;
 	Manager* manager;
 	Coach** coaches;

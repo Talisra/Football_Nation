@@ -25,10 +25,12 @@ void Coach::setType(Team::Role type)
 	this->type = type;
 }
 
-void Coach::setTeam(Team* team) 
+void Coach::setTeam(Team* team)
 {
 	if (currentTeam != team)
 	{
+		if (currentTeam != nullptr)
+		//currentTeam->removeCoach(this);
 		currentTeam = team;
 		if (currentTeam != nullptr)
 		{
