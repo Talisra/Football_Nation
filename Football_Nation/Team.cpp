@@ -37,16 +37,23 @@ void Team::addPlayer(Player* player)
 }
 
 
-void Team::addToLineup(int index)
+void Team::addToLineup(Player* player)
 {
-	if (index > LINEUP_SIZE)
+	if (player == nullptr)
+		return;
+
+	for (int i = 0; i < currentLineup; i++) //return if the selected player is already in lineup
 	{
-		Player* pl = benchPlayers[index - LINEUP_SIZE];
-		removePlayer(index);
-		lineup[currentLineup] = pl;
-		currentLineup++;
+		if (lineup[i] == player)
+			return;
 	}
-	// if the code comes here it supposed to throw an exception.
+
+	if (currentLineup >= LINEUP_SIZE) //return if the lineup is full
+		return;
+
+	removePlayer(player);
+	lineup[currentLineup] = player;
+	currentLineup++;
 }
 
 void Team::removePlayer(Player* player)
