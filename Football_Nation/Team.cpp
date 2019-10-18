@@ -12,6 +12,17 @@ Team::Team(const char* name, Manager* manager = nullptr, Coach* coaches = nullpt
 	this->benchPlayers = new Player*[INITIAL_BENCH_SIZE];
 }
 
+Team::Team(const char* name, Manager* manager, Coach** coaches, Player** lineup, Player** benchPlayers, int points)
+{
+	this->name = new char[sizeof(name) + 1];
+	strcpy(this->name, name);
+	this->manager = manager;
+	this->coaches = coaches;
+	this->lineup = lineup;
+	this->benchPlayers = benchPlayers;
+	this->points = points;
+}
+
 Team::~Team()
 {
 	delete[] name;
@@ -143,6 +154,17 @@ void Team::removeCoach(Coach* coach)
 	}
 }
 
+Team Team::operator+(int points) const
+{
+	return Team(name, manager, *coaches, *lineup, *benchPlayers, this->points + points);
+}
+
+bool Team::operator>=(const Team& otherTeam) const
+{
+	return points >= otherTeam.points;
+}
+
+//below functions are for use inside this class only! (they are private)
 bool Team::fillBench(Player* player)
 {
 	for (int i = 0; i < benchSize; i++)
