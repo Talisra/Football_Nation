@@ -6,7 +6,7 @@
 class Referee : public Person
 {
 private:
-
+	const static int ARR[6];
 	int gamesPlayed;
 	int rating;
 
@@ -22,5 +22,6 @@ public:
 	void setRating();
 
 };
+const static int ARR[6] = { 3, 10, 50, 100, 300, 1000 };
 
 #endif //__REFEREE_H

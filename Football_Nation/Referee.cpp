@@ -22,14 +22,12 @@ void Referee::setGamesPlayed(int games)
 
 void Referee::setRating()
 {
-	int arr[6] = {3, 10, 50, 100, 300, 1000};
-	int determineRating = getGamesPlayed();
 	int counter = 0;
-
-	while (determineRating >= arr[counter]) 
+	
+	while ((getGamesPlayed() < ARR[counter]))
 	{
-		counter = counter + 1;
+		counter++;
 	}
 
-	this->rating = rating;
+	this->rating = counter;
 }
