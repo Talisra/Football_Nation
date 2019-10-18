@@ -1,7 +1,7 @@
 #ifndef __PERSON_H
 #define __PERSON_H
 #include <iostream>
-//const int NAME_SIZE = 30;
+const int NAME_SIZE = 30;
 class Person
 {
 protected:
@@ -14,7 +14,7 @@ protected:
 public:
 	Person(const char* name, int age, const char* nationality);
 	virtual void show() const = 0;
-	virtual const Person& operator=(const Person& other) = 0;
+	//virtual const Person& operator=(const Person& other) = 0;
 
 	char* getName() const;
 	int getAge() const;

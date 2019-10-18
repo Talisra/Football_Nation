@@ -18,42 +18,44 @@ Referee * readReferee(ifstream& inputFile);
 
 int main()
 {
-	ifstream inputFile("League.txt");
-	League * league = readLeague(inputFile);
+//	ifstream inputFile("League.txt");
+//	League * league = readLeague(inputFile);
 	/*
 	 *start season (create season fixtures)
 	 *create matches and assign referees for each match
 	 */
-	league->startSeason();
+//	league->startSeason();
 	/*
 	 *Play matches until the end of the season
 	 *	-assign the match number of goals (random)
 	 *	-for each goal u assign u will need to assign (random) player that scored
 	 *	-display the fixture's matches results
 	 *	-every fixture played u should increment number of fixtures played
-	 */
+	 
 	do 
 	{
 		Fixture fixture = league->playFixture();
 		cout << fixture;
 	} while (league->isEnded());
-
+*/
 	//end season
 	/*show League Table*/
-	league->show();
+//	league->show();
 	//show leading team(team)
-	league->showLeadingTeam();
+//	league->showLeadingTeam();
 	//show the loosing team(team)
-	league->showLoosingTeam();
+//	league->showLoosingTeam();
 	//show the leading scorer(player)
-	league->showLeadingScorer();
+//	league->showLeadingScorer();
 	//show the ref that played the most matches
-	league->showMostActiveReferee();
-	inputFile.close();
-	system("pause");
-	return 0;
-}
+//	league->showMostActiveReferee();
+//	inputFile.close();
 
+	Team t1("Team", nullptr, nullptr, nullptr, nullptr, 5 );
+	system("pause");
+	//return 0;
+}
+/*
 League * readLeague(ifstream& inputFile)
 {
 	int numberOfTeams;
@@ -62,9 +64,9 @@ League * readLeague(ifstream& inputFile)
 	League * newLeague;
 
 	/*Get League name*/
-	inputFile >> name;
+	/*inputFile >> name;
 	/*Get number of teams*/
-	inputFile >> numberOfTeams;
+	/*	inputFile >> numberOfTeams;
 	newLeague = new League(name, numberOfTeams);
 
 	for (int i = 0; i < numberOfTeams; i++)
@@ -74,7 +76,7 @@ League * readLeague(ifstream& inputFile)
 	}
 
 	/*Get number of referees*/
-	inputFile >> numberOfreferees;
+/*	inputFile >> numberOfreferees;
 	newLeague->setNumberOfReferees(numberOfreferees);
 	for (int i = 0; i < numberOfreferees; i++)
 	{
@@ -92,9 +94,9 @@ Team * readTeam(ifstream& inputFile)
 	char name[NAME_SIZE];
 	
 	/*Get team name*/
-	inputFile >> name;
+/*	inputFile >> name;
 	/*Get number of players*/
-	inputFile >> numberOfPlayers;
+/*	inputFile >> numberOfPlayers;
 
 	Team * newTeam = new Team(name);
 	for (int i = 0; i < numberOfPlayers; i++)
@@ -104,7 +106,7 @@ Team * readTeam(ifstream& inputFile)
 	}
 
 	/*Get number of coaches*/
-	inputFile >> numberOfCoaches;
+	/*inputFile >> numberOfCoaches;
 
 	for (int i = 0; i < numberOfCoaches; i++)
 	{
@@ -116,50 +118,52 @@ Team * readTeam(ifstream& inputFile)
 	newTeam->setManager(manager);
 	return newTeam;
 }
-
+/*
 Player * readPlayer(ifstream& inputFile)
 {
 	char name[NAME_SIZE], nationality[NAME_SIZE];
 	int age, attack, defence, goalkeeping, goalScored, value, role;
 
 	/*Get Player attributes*/
-	inputFile >> name >> age >>
+	/*	inputFile >> name >> age >>
 		nationality >> attack >>
 		defence >> goalkeeping >>
 		goalScored >> value >> role; 
 
 	return new Player(name, age, nationality, attack, defence, goalkeeping, goalScored, value, (Team::Role) role);
-}
-
+}*/
+/*
 Coach * readCoach(ifstream& inputFile)
 {
 	char name[30], nationality[30];
 	int age, type;
 
 	/*Get Coach attributes*/
-	inputFile >> name >> age >> nationality >> type;
+	/*inputFile >> name >> age >> nationality >> type;
 
 	return new Coach(name, age, nationality, (Team::Role) type);
 }
-
+/*
 Manager * readManager(ifstream& inputFile)
 {
 	char name[NAME_SIZE], nationality[NAME_SIZE];
 	int age, yearsOfExperience;
 
 	/*Get manager attributes*/
+	/*
 	inputFile >> name >> age >> nationality >> yearsOfExperience;
 
 	return new Manager(name, age, nationality, yearsOfExperience);
-}
-
+}*/
+/*
 Referee* readReferee(ifstream& inputFile) 
 {
 	char name[NAME_SIZE], nationality[NAME_SIZE];
 	int age, rating;
 
 	/*Get referee attributes*/
-	inputFile >> name >> age >> nationality >> rating;
+	/*	inputFile >> name >> age >> nationality >> rating;
 
 	return new Referee(name, age, nationality, rating);
 }
+*/

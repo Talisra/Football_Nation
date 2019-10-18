@@ -39,6 +39,9 @@
     <ClCompile Include="Team.cpp">
       <Filter>Source Files\Header Implementations</Filter>
     </ClCompile>
+    <ClCompile Include="Coach_Player.cpp">
+      <Filter>Source Files\Header Implementations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="coach.h">

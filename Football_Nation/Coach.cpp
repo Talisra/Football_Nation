@@ -7,6 +7,18 @@ Coach::Coach(const char* name, int age, const char* nationality, Team::Role type
 	setTeam(currentTeam);
 }
 
+Coach::Coach(Team::Role type = (Team::Role) 0, Team* currentTeam = nullptr)
+{
+	setType;
+	setTeam;
+}
+
+Coach::Coach(const Coach& other)
+{
+	setType(type);
+	setTeam(currentTeam);
+}
+
 void Coach::show() const
 {
 
