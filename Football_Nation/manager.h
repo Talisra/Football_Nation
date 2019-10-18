@@ -16,6 +16,6 @@ private:
 public:
 	Manager(const char *name, int age, const char* nationality,int yearsOfExperience);
 	void setTeam(Team * team);
-	~Manager();
+	//~Manager();
 };
 #endif //__MANAGER_H
