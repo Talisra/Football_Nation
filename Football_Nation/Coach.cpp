@@ -32,7 +32,7 @@ void Coach::setTeam(Team* team)
 		currentTeam = team;
 		if (currentTeam != nullptr)
 		{
-			currentTeam->setCoach(this);  // add setCoach to team
+			currentTeam->addCoach(this);  // add coach to team
 		}
 	}
 }
