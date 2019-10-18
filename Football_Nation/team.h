@@ -32,8 +32,8 @@ public:
 	void addPlayer(Player * player);
 	void removePlayer(Player* Player); 
 	void removeCoach(Coach* coach);
-	void addToLineup(int index); //this will add the indexed player from the bench to the lineup. (will remove the indexed player from the bench).
-	void removeFromLineup(Player* player); //this will remove the player from the lineup to the bench. index between 0 to LINEUP_SIZE-1.
+	void addToLineup(Player* player); //this will add player from the bench to the lineup. (will remove the other player from the bench).
+	void removeFromLineup(Player* player); //this will remove the player from the lineup to the bench.
 	//NOTE: ^^ this function will not return a feedback if the index is already a nullptr
 	Team operator+(int points) const; //TODO - might not be const 'cause it changes the class
 	bool operator >=(const Team& otherTeam) const; //Team is bigger if team have more point
