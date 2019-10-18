@@ -25,6 +25,14 @@ public:
 		Player * lineup = nullptr,
 		Player * benchPlayers = nullptr,
 		int points = 0);
+
+	Team(const char* name,
+		Manager* manager,
+		Coach** coaches,
+		Player** lineup,
+		Player** benchPlayers,
+		int points);
+
 	~Team();
 
 	void setManager(Manager * manger); 
@@ -36,7 +44,7 @@ public:
 	void removeFromLineup(Player* player); //this will remove the player from the lineup to the bench.
 	//NOTE: ^^ this function will not return a feedback if the index is already a nullptr
 	Team operator+(int points) const; //TODO - might not be const 'cause it changes the class
-	bool operator >=(const Team& otherTeam) const; //Team is bigger if team have more point
+	bool operator>=(const Team& otherTeam) const; //Team is bigger if team have more point
 
 private:
 	bool fillBench(Player* player); //try to fill a player in the bench. returns true if there is a room, and false if the bench is currenty full. an outside function will extend the bench array.
