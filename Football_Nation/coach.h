@@ -13,7 +13,6 @@ public:
 		const char* nationality,
 		Team::Role type = (Team::Role) 0 ,
 		Team* currentTeam = nullptr);
-	Coach(Team::Role type = (Team::Role), Team * currentTeam)
 	~Coach();
 	virtual const Coach& operator=(const Coach& other) = delete;
 
