@@ -14,6 +14,8 @@ public:
 		Team::Role type = (Team::Role) 0 ,
 		Team* currentTeam = nullptr);
 	~Coach();
+	virtual const Coach& operator=(const Coach& other) = delete;
+
 
 	void show() const;
 	Team::Role getType() const;

@@ -3,7 +3,7 @@
 Coach::Coach(const char* name, int age, const char* nationality, Team::Role type = (Team::Role) 0, Team * currentTeam = nullptr) :
 	Person(name, age, nationality)
 {
-	this->type = type;
+	setType(type);
 	setTeam(currentTeam);
 }
 

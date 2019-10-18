@@ -3,7 +3,7 @@
 Referee::Referee(const char* name, int age, const char* nationality, int rating = 0, int gamesPlayed = 0):
 	Person(name,age,nationality)
 {
-	this->gamesPlayed = gamesPlayed;
+	setGamesPlayed(gamesPlayed);
 	setRating();
 }
 

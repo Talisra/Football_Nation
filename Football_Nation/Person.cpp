@@ -1,13 +1,15 @@
 #include "person.h"
 
+//implement show and operator= in non abstract children
+
 Person::Person(const char* name, int age=17, const char* nationality)
 {
-	this->name = new char[strlen(name) + 1];
-	this->nationality = new char[strlen(nationality) + 1];
-	strcpy(this->name, name);
-	this->age = age;
-	strcpy(this->nationality, nationality);
+	setName(name);
+	setAge(age);
+	setNationality(nationality);
 }
+
+Person::
 
 Person::~Person() 
 {
@@ -15,10 +17,8 @@ Person::~Person()
 	delete []nationality;
 }
 
-void Person::show() const
-{
-
-}
+//void Person::show() const {}
+//abstact class - implement in children
 
 //Getters
 

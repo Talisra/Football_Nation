@@ -9,12 +9,12 @@ protected:
 	int age;
 	char* nationality; //[NAME_SIZE] ;
 	Person(const Person& other) = delete;
-	const Person& operator=(const Person& other) = delete;
-	~Person();
+	virtual ~Person();
 
 public:
 	Person(const char* name, int age, const char* nationality);
-	void show() const;
+	virtual void show() const = 0;
+	virtual const Person& operator=(const Person& other) = 0;
 
 	char* getName() const;
 	int getAge() const;
