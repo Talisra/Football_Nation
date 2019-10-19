@@ -11,6 +11,7 @@
     <ClCompile Include="Referee.cpp" />
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="Fixture.cpp" />
+    <ClCompile Include="League.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="coach.h" />
