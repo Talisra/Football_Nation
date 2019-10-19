@@ -24,7 +24,7 @@ void simulateAttack(Team* attackingTeam, Team* defendingTeam)
 
 	for (int i = 0; i < LINEUP_SIZE; i++) 
 	{
-		Player attPlayer = attackingTeam->getLineUp[i]; //TODO..I assume it gives lineup and I can access the player? also not good but will be fixed
+		Player attPlayer = *(*attackingTeam.getLineup)[i]; //TODO..I assume it gives lineup and I can access the player? also not good but will be fixed
 		if (attPlayer.getRole == (Role)0)  //Striker
 			attackingScore += (STRIKER_BONUS + attPlayer.getAttack());
 		else 
