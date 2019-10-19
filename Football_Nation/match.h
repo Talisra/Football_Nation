@@ -25,7 +25,7 @@ public:
 	Team* getAwayTeam() const;
 	Referee* getReferee() const;
 	int getResult() const; //TODO
-	friend ostream& operator<<(ostream& os, const Match& fixture)
+	friend ostream& operator<<(ostream& os, const Match& fixture);
 
 };
 #endif // !__MATCH_H

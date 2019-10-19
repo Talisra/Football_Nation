@@ -1,5 +1,6 @@
 #ifndef __PERSON_H
 #define __PERSON_H
+#pragma warning(disable:4996)
 #include <iostream>
 const int NAME_SIZE = 30;
 class Person
