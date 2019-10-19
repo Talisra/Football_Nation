@@ -1,7 +1,7 @@
 #include "player.h"
 
-Player::Player(const char* name, int age, const char* nationality, int attack, int defence, int goalkeeping, int goalScored = 0, int value = 0,
-	Role role = (Role)0, Team* currentTeam = nullptr) : Person(name, age, nationality), attack(attack), defence(defence), goalkeeping(goalkeeping), goalScored(goalScored), value(value),
+Player::Player(const char* name, int age, const char* nationality, int attack, int defence, int goalkeeping, int goalScored0, int value,
+	Role role, Team* currentTeam) : Person(name, age, nationality), attack(attack), defence(defence), goalkeeping(goalkeeping), goalScored(goalScored), value(value),
 	role(role), currentTeam(currentTeam)
 {
 
@@ -81,6 +81,7 @@ void Player::setTeam(Team* team)
 Player Player::operator++(int)
 {
 	goalScored++;
+	return *this;
 }
 
 bool Player::operator>=(const Player& player) const

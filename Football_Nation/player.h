@@ -1,5 +1,7 @@
 #ifndef __PLAYER_H
 #define __PLAYER_H
+#pragma warning(disable:4996)
+
 #include "person.h"
 #include "team.h"
 #include "role.h"

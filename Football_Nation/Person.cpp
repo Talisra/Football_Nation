@@ -2,7 +2,7 @@
 
 //implement show and operator= in non abstract children
 
-Person::Person(const char* name, int age=17, const char* nationality)
+Person::Person(const char* name, int age, const char* nationality)
 {
 	setName(name);
 	setAge(age);
