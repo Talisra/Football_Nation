@@ -10,6 +10,11 @@ Team::Team(const char* name, Manager* manager, Coach* coaches, Player* lineup, P
 	this->coaches = new Coach*[INITIAL_COACH_SIZE];
 	this->lineup = new Player*[LINEUP_SIZE];
 	this->benchPlayers = new Player*[INITIAL_BENCH_SIZE];
+	benchSize = 0;
+	coachesSize = 0;
+	currentLineup = 0;
+	this->points = 0;
+
 }
 
 Team::Team(const char* name, Manager* manager, Coach** coaches, Player** lineup, Player** benchPlayers, int points)
@@ -20,6 +25,9 @@ Team::Team(const char* name, Manager* manager, Coach** coaches, Player** lineup,
 	this->coaches = coaches;
 	this->lineup = lineup;
 	this->benchPlayers = benchPlayers;
+	benchSize = 0;
+	coachesSize = 0;
+	currentLineup = 0;
 	this->points = points;
 }
 
