@@ -139,6 +139,7 @@
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="referee.h" />
+    <ClInclude Include="role.h" />
     <ClInclude Include="team.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -17,7 +17,6 @@ class Team
 {
 
 public:
-	enum Role { striker, defender, goalkeeper, midlefielder };
 
 	Team(const char* name,
 		Manager * manager = nullptr,

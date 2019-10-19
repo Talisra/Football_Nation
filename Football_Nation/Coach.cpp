@@ -1,6 +1,6 @@
 #include "coach.h"
 
-Coach::Coach(const char* name, int age, const char* nationality, Team::Role type = (Team::Role) 0, Team * currentTeam = nullptr) :
+Coach::Coach(const char* name, int age, const char* nationality, Role type, Team * currentTeam) :
 	Person(name, age, nationality)
 {
 	setType(type);
@@ -24,10 +24,10 @@ Coach::~Coach()
 	delete[] currentTeam;
 }
 
-Team::Role Coach::getType() const {return type; }
+Role Coach::getType() const {return type; }
 Team* Coach::getCurrentTeam() const {return currentTeam;}
 
-void Coach::setType(Team::Role type)
+void Coach::setType(Role type)
 {
 	this->type = type;
 }

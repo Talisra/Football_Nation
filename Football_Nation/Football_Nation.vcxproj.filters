@@ -23,5 +23,6 @@
     <ClInclude Include="player.h" />
     <ClInclude Include="referee.h" />
     <ClInclude Include="team.h" />
+    <ClInclude Include="role.h" />
   </ItemGroup>
 </Project>

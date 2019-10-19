@@ -51,7 +51,6 @@ int main()
 //	league->showMostActiveReferee();
 //	inputFile.close();
 
-	Team t1("Team", nullptr, nullptr, nullptr, nullptr, 5 );
 	system("pause");
 	//return 0;
 }
