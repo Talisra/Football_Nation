@@ -7,6 +7,8 @@
 #include "role.h"
 class Team;
 
+const int STRIKER_BONUS = 5;
+
 class Player : virtual public Person
 {
 
