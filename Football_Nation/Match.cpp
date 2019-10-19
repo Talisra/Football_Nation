@@ -25,39 +25,31 @@ void simulateAttack(Team* attackingTeam, Team* defendingTeam)
 	for (int i = 0; i < LINEUP_SIZE; i++) 
 	{
 		Player* attPlayer = attackingTeam->getLineup()[i];
-		attackingScore += attPlayer->getAttack + (attPlayer->getRole == 0 ? STRIKER_BONUS : 0);
+		attackingScore += attPlayer->getAttack + (attPlayer->getRole == 0 ? STRIKER_BONUS : 0);                 //player is a striker
 
-		/*
-		Player attPlayer = *((*attackingTeam).getLineup)[i]; //TODO..I assume it gives lineup and I can access the player? also not good but will be fixed
-		if (attPlayer.getRole == (Role)0)  //Striker
-			attackingScore += (STRIKER_BONUS + attPlayer.getAttack());
-		else 
-		{
-			attackingScore += attPlayer.getAttack();
-		}
-		*/
-
-		Player defPlayer = *(defendingTeam->getLineup[i]);
-		if (defPlayer.getRole == (Role) 2)   //role 3 goalkepper...
-			goalKeepingScore += defPlayer.getGoalkeeping;
-		else 
-		{
-			defendingScore += defPlayer.getDefence;
-		}
+		Player* defPlayer = defendingTeam->getLineup()[i];
+		defendingScore += defPlayer->getDefence + (defPlayer->getRole == 1 ? DEFENDER_BONUS : 0);               //player is a defender
+		goalKeepingScore += (defPlayer->getRole == 2 ? defPlayer->getDefence + defPlayer->getGoalkeeping : 0);  //player is a goalkepper	
 	}
 
-	for(int i=0 ; i < ATTACK_ROUNDS; i++)
+	for (int i = 0; i < ATTACK_ROUNDS; i++)
+	{
 		srand(time(NULL));
-		int	random = rand() % 10;
-		if (attackingScore + random > defendingScore + (goalKeepingScore * 1.2))
-			cout << attackingTeam.getName << 'Scored a goal!' << endl;
-			attackingTeam.getLineup[i]++;    //add a goal to a player from attacking team
-			if (attackingTeam == this->homeTeam)
+		int	random = rand() % 22 + 2;
+		if (attackingScore + random > defendingScore + goalKeepingScore) 
+		{
+			cout << attackingTeam->getName << 'Scored a goal!' << endl;
+			attackingTeam->getLineup()[i]++;    //add a goal to a player from attacking team
+			if (attackingTeam == this.homeTeam)
 				this.result[0] += 1;
-			else 
+			else
 			{
 				this.result[1] += 1;
 			}
+		}
+		
+	}
+
 
 }
 
