@@ -1,7 +1,7 @@
 #include "player.h"
 
 Player::Player(const char* name, int age, const char* nationality, int attack, int defence, int goalkeeping, int goalScored = 0, int value = 0,
-	Team::Role role = (Team::Role)0, Team* currentTeam = nullptr) : Person(name, age, nationality), attack(attack), defence(defence), goalkeeping(goalkeeping), goalScored(goalScored), value(value),
+	Role role = (Role)0, Team* currentTeam = nullptr) : Person(name, age, nationality), attack(attack), defence(defence), goalkeeping(goalkeeping), goalScored(goalScored), value(value),
 	role(role), currentTeam(currentTeam)
 {
 
@@ -38,7 +38,7 @@ int Player::getValue() const
 	return value;
 }
 
-Team::Role Player::getRole() const
+Role Player::getRole() const
 {
 	return role;
 }
@@ -68,7 +68,7 @@ void Player::setValue(int val)
 	value = val;
 }
 
-void Player::setRole(Team::Role role)
+void Player::setRole(Role role)
 {
 	this->role = role;
 }

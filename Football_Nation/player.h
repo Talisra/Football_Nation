@@ -2,6 +2,7 @@
 #define __PLAYER_H
 #include "person.h"
 #include "team.h"
+#include "role.h"
 class Team;
 
 class Player : virtual public Person
@@ -16,7 +17,7 @@ public:
 		const char* nationality,
 		int attack, int defence,
 		int goalkeeping, int goalScored = 0, int value=0,
-		Team::Role role= (Team::Role)0, Team * currentTeam = nullptr);
+		Role role= (Role)0, Team * currentTeam = nullptr);
 
 	Player operator++(int);
 	bool operator >=(const Player& player) const; //Player is bigger if he scored more goles
@@ -31,14 +32,14 @@ public:
 	int getGoalkeeping() const;
 	int getGoalScored() const;
 	int getValue() const;
-	Team::Role getRole() const;
+	Role getRole() const;
 	Team* getTeam() const;
 	//setters
 	void setAttack(int atk);
 	void setDefence(int def);
 	void setGoalkeeping(int goalkeeping);
 	void setValue(int val);
-	void setRole(Team::Role role);
+	void setRole(Role role);
 	void setTeam(Team* team);
 
 protected:
@@ -47,7 +48,7 @@ protected:
 	int goalkeeping;
 	int goalScored;
 	int value;
-	Team::Role role;
+	Role role;
 	Team* currentTeam;
 
 	Player(const Player& other);
