@@ -8,7 +8,28 @@ referees(referees), numberOfFixtures(numberOfFixtures), fixtures(nullptr)
 	playedFixtures = 0;
 }
 
+League::~League()
+{
+
+}
+
+void League::setNumberOfReferees(int num)
+{
+	this->numberOfReferees = num;
+
+}
+
+
+
 void League::addTeam(Team* team)
 {
-	
+	numberOfTeams++;
+	Team** tempTeam = teams;
+	delete[] teams;
+	teams = new Team* [numberOfTeams];
+	for (int i = 0; i < numberOfTeams - 1; i++)
+	{
+		teams[i] = tempTeam[i];
+	}
+	teams[numberOfTeams] = team;
 }
