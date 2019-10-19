@@ -3,7 +3,7 @@
 #include "team.h"
 #include "referee.h"
 
-
+const int NUM_OF_RESULTS = 2 ;
 class Match
 {
 
@@ -11,7 +11,7 @@ private:
 
 	Team* homeTeam;
 	Team* awayTeam;
-	int result[2]; // index 0 = home result, index 1 = away result.
+	int result[NUM_OF_RESULTS]; // index 0 = home result, index 1 = away result.
 	Referee* referee;
 	Match(const Match& other) = default;
 
@@ -28,5 +28,6 @@ public:
 	friend ostream& operator<<(ostream& os, const Match& fixture);
 
 };
+
 #endif // !__MATCH_H
 

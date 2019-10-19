@@ -41,6 +41,6 @@ int Match::getResult() const //TODO
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	os << "Home Team: " + match.getHomeTeam + " vs " + "Away Team: " + match.getAwayTeam + ",result is: " + match.getResult + endl;
+	os << "Home Team: " << match.getHomeTeam << " vs " << "Away Team: " << match.getAwayTeam << ",result is: " << match.getResult + endl;
 	return os;
 }
