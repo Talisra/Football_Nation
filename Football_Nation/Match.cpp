@@ -25,7 +25,7 @@ void simulateAttack(Team* attackingTeam, Team* defendingTeam)
 	for (int i = 0; i < LINEUP_SIZE; i++) 
 	{
 		Player* attPlayer = attackingTeam->getLineup()[i];
-		attackingScore += attPlayer->getAttack + attPlayer->getRole == 0 ? STRIKER_BONUS : 0;
+		attackingScore += attPlayer->getAttack + (attPlayer->getRole == 0 ? STRIKER_BONUS : 0);
 
 		/*
 		Player attPlayer = *((*attackingTeam).getLineup)[i]; //TODO..I assume it gives lineup and I can access the player? also not good but will be fixed
