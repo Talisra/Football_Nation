@@ -8,10 +8,10 @@ class Match
 {
 
 private:
-	Team * homeTeam;
-	Team * awayTeam;
+	Team* homeTeam;
+	Team* awayTeam;
 	int result[2];
-	Referee * referee;
+	Referee* referee;
 	Team* homeTeam;
 	Team* awayTeam;
 	int result[2]; // index 0 = home result, index 1 = away result.

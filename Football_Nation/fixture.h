@@ -7,12 +7,12 @@ class Fixture
 
 private:
 	int number;
-	Match * matches;
+	Match* matches[];
 
 public:
-	Fixture(int number, Match * matches = nullptr);
-	~Fixture();
-	Fixture(const Fixture& other);
+	Fixture(int number, Match* matches[]);
+//	~Fixture();
+//	Fixture(const Fixture& other);
 	
 
 	friend ostream& operator<<(ostream& os,const Fixture& fixture);
