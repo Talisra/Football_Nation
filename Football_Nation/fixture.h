@@ -6,11 +6,13 @@ class Fixture
 {
 
 private:
+
+	int gamesInFixture;
 	int number;
-	Match* matches[];
+	Match** matches;
 
 public:
-	Fixture(int number, Match* matches[]);
+	Fixture(int gamesInFixture, int number, Match** matches);
 //	~Fixture();
 //	Fixture(const Fixture& other);
 	
