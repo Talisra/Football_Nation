@@ -2,7 +2,7 @@
 #include "coach.h"
 
 
-Team::Team(const char* name, Manager* manager = nullptr, Coach* coaches = nullptr, Player* lineup = nullptr, Player* benchPlayers = nullptr, int points = 0)
+Team::Team(const char* name, Manager* manager, Coach* coaches, Player* lineup, Player* benchPlayers, int points)
 {
 	this->name = new char[sizeof(name) + 1];
 	strcpy(this->name, name);
