@@ -164,12 +164,17 @@ bool Team::operator>=(const Team& otherTeam) const
 	return points >= otherTeam.points;
 }
 
+Player** Team::getLineup()
+{
+	return lineup;
+}
+
 //below functions are for use inside this class only! (they are private)
 bool Team::fillBench(Player* player)
 {
 	for (int i = 0; i < benchSize; i++)
 	{
-		if (benchPlayers[i] = nullptr)
+		if (benchPlayers[i] == nullptr)
 		{
 			benchPlayers[i] = player;
 			return true;
@@ -182,7 +187,7 @@ bool Team::fillCoach(Coach* coach)
 {
 	for (int i = 0; i < coachesSize; i++)
 	{
-		if (coaches[i] = nullptr)
+		if (coaches[i] == nullptr)
 		{
 			coaches[i] = coach;
 			return true;
