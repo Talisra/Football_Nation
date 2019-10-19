@@ -22,10 +22,11 @@ void simulateAttack(Team* attackingTeam, Team* defendingTeam)
 	int defendingScore = 0;
 	int goalKeepingScore = 0;
 
-	for (int i = 0; i < LINEUP_SIZE; i++)
+	for (int i = 0; i < LINEUP_SIZE; i++) 
+	{
 		Player attPlayer = attackingTeam->getLineUp[i]; //TODO..I assume it gives lineup and I can access the player? also not good but will be fixed
 		if (attPlayer.getRole == (Role)0)  //Striker
-			attackingScore += (STRIKER_BONUS + attPlayer.getAttack();
+			attackingScore += (STRIKER_BONUS + attPlayer.getAttack());
 		else 
 		{
 			attackingScore += attPlayer.getAttack();
@@ -38,6 +39,7 @@ void simulateAttack(Team* attackingTeam, Team* defendingTeam)
 		{
 			defendingScore += defPlayer.getDefence;
 		}
+	}
 
 	for(int i=0 ; i < ATTACK_ROUNDS; i++)
 		srand(time(NULL));

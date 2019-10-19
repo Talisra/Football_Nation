@@ -6,7 +6,7 @@ CoachPlayer::CoachPlayer(const char* name, int age, const char* nationality, con
 
 }
 
-void CoachPlayer::show()
+void CoachPlayer::show() const
 {
-
 }
+

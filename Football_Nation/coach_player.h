@@ -7,6 +7,6 @@ class CoachPlayer : public Coach, public Player
 {
 public:
 	CoachPlayer(const char* name, int age, const char* nationality, const Coach& c, const Player& p);
-	void show();
+	void show() const ;
 };
 #endif //__COACHPLAYER_H
