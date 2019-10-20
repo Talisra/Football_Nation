@@ -18,6 +18,7 @@ void Match::playMatch()
 
 void simulateAttack(Team* attackingTeam, Team* defendingTeam) 
 {
+	/*
 	int attackingScore = 0;
 	int defendingScore = 0;
 	int goalKeepingScore = 0;
@@ -47,10 +48,7 @@ void simulateAttack(Team* attackingTeam, Team* defendingTeam)
 				this.result[1] += 1;
 			}
 		}
-		
-	}
-
-
+	}*/
 }
 
 Team* Match::getWinnerTeam() const
@@ -84,6 +82,6 @@ int* Match::getResult() const //TODO
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	os << "Home Team: " << match.getHomeTeam << " vs " << "Away Team: " << match.getAwayTeam << ",result is: " << match.getResult + endl;
+	/*os << "Home Team: " << match.getHomeTeam << " vs " << "Away Team: " << match.getAwayTeam << ",result is: " << match.getResult + endl;*/
 	return os;
 }
