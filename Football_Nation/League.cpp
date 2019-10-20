@@ -15,21 +15,37 @@ League::~League()
 
 void League::setNumberOfReferees(int num)
 {
-	this->numberOfReferees = num;
-
+	Referee** temp = new Referee*[num];
+	for (int i = 0; i < numberOfReferees; i++)
+	{
+		temp[i] = referees[i];
+		if (i == num-1)
+			break;
+	}
+	delete[] referees;
+	referees = temp;
+	numberOfReferees = num;
 }
 
-
+void League::addReferee(Referee* referee)
+{
+	for (int i = 0; i < numberOfReferees; i++)
+	{
+		if (referees[i] == nullptr)
+		{
+			referees[i] = referee;
+			return;
+		}
+	}
+}
 
 void League::addTeam(Team* team)
 {
-	numberOfTeams++;
-	Team** tempTeam = teams;
-	delete[] teams;
-	teams = new Team* [numberOfTeams];
+	Team** tempTeam = new Team*[++numberOfTeams];
 	for (int i = 0; i < numberOfTeams - 1; i++)
 	{
-		teams[i] = tempTeam[i];
+		tempTeam[i] = teams[i];
 	}
-	teams[numberOfTeams] = team;
+	delete[] teams;
+	teams = tempTeam;
 }
