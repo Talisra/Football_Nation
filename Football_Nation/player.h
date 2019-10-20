@@ -15,8 +15,8 @@ class Player : virtual public Person
 
 public:
 	
-	void show() const;
-	double getRate();
+	void show() const; //TODO: IMPLEMENT THE FUNCTION
+	//double getRate();
 
 	Player(const char * name, int age,
 		const char* nationality,
@@ -27,9 +27,7 @@ public:
 	Player operator++(int);
 	bool operator >=(const Player& player) const; //Player is bigger if he scored more goles
 
-	int getTotalStats() const;
-
-	~Player();
+	int getTotalStats() const; //TODO: IMPLEMENT THE FUNCTION
 
 	//getters
 	int getAttack() const;

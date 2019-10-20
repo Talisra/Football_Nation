@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-
+/*
 #include "player.h"
 #include "coach.h"
 #include "manager.h"
@@ -9,13 +9,14 @@ using namespace std;
 #include "league.h"
 #include "fixture.h"
 
+
 League * readLeague(ifstream& inputFile);
 Team * readTeam(ifstream& inputFile);
 Player * readPlayer(ifstream& inputFile);
 Coach * readCoach(ifstream& inputFile);
 Manager * readManager(ifstream& inputFile);
 Referee * readReferee(ifstream& inputFile);
-
+*/
 int main()
 {
 //	ifstream inputFile("League.txt");

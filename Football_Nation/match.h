@@ -19,7 +19,6 @@ private:
 public:
 	Match(Team* homeTeam, Team* awayTeam, Referee * referee);//Inside the constructor need to play Match random score and assign also randommly assign goal to player and score to winning team. 
 	void playMatch();
-	~Match();
 	void show() const;
 	void simulateAttack(Team* attackingTeam, Team* defendingTeam);
 

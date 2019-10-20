@@ -10,8 +10,8 @@ class Player;
 class Manager;
 
 const int LINEUP_SIZE = 5; // size of the team lineup 
-int INITIAL_BENCH_SIZE = 10; // size of initial size of the bench. it is unlimited but must have an actual value. MUST BE > 0;
-int INITIAL_COACH_SIZE = 3; // size of initial size of the coach array. it is unlimited but must have an actual value. MUST BE > 0;
+const int INITIAL_BENCH_SIZE = 10; // size of initial size of the bench. it is unlimited but must have an actual value. MUST BE > 0;
+const int INITIAL_COACH_SIZE = 3; // size of initial size of the coach array. it is unlimited but must have an actual value. MUST BE > 0;
 
 class Team 
 {

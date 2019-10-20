@@ -16,7 +16,7 @@ void Match::playMatch()
 	simulateAttack(awayTeam,homeTeam);
 }
 
-void simulateAttack(Team* attackingTeam, Team* defendingTeam) 
+void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam) 
 {
 	/*
 	int attackingScore = 0;
@@ -55,8 +55,7 @@ Team* Match::getWinnerTeam() const
 {
 	if (result[0] != result[1])
 		result[0] > result[1] ? homeTeam : awayTeam;
-	else
-		return nullptr;
+	return nullptr;
 }
 
 
@@ -78,6 +77,11 @@ Referee* Match::getReferee() const
 int* Match::getResult() const //TODO 
 {
 	return 0;
+}
+
+void Match::show() const
+{
+
 }
 
 ostream& operator<<(ostream& os, const Match& match)

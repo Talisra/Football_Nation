@@ -48,6 +48,11 @@ Team* Player::getTeam() const
 	return currentTeam;
 }
 
+int Player::getTotalStats() const
+{
+	return 0;
+}
+
 void Player::setAttack(int atk)
 {
 	attack = atk;
@@ -76,6 +81,11 @@ void Player::setRole(Role role)
 void Player::setTeam(Team* team)
 {
 	this->currentTeam = team;
+}
+
+void Player::show() const
+{
+
 }
 
 Player Player::operator++(int)
