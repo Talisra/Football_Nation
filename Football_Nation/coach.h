@@ -1,8 +1,9 @@
 #ifndef __COACH_H
 #define __COACH_H
+
 #include "person.h"
-#include "team.h"
 #include "role.h"
+#include "team.h"
 
 class Team;
 class Coach : virtual public Person
