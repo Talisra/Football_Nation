@@ -187,6 +187,11 @@ void Team::scoreGoal()
 	
 }
 
+int Team::getPoints()
+{
+	return points;
+}
+
 Player** Team::getLineup()
 {
 	return lineup;
