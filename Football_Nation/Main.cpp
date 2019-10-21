@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-/*
+
 #include "player.h"
 #include "coach.h"
 #include "manager.h"
@@ -9,7 +9,7 @@ using namespace std;
 #include "league.h"
 #include "fixture.h"
 
-
+/*
 League * readLeague(ifstream& inputFile);
 Team * readTeam(ifstream& inputFile);
 Player * readPlayer(ifstream& inputFile);
@@ -19,6 +19,16 @@ Referee * readReferee(ifstream& inputFile);
 */
 int main()
 {
+	Player messi("Messi", 32, "Spain", 40, 30, 10, 0, 10000, (Role)0, nullptr);
+	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0, nullptr);
+	Coach z("Zidan", 40, "French", (Role)2, nullptr);
+	++messi;
+	cout << messi;
+	cout << ronaldo;
+	cout << z;
+	cout << (messi >= ronaldo);
+
+
 //	ifstream inputFile("League.txt");
 //	League * league = readLeague(inputFile);
 	/*
