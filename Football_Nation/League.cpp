@@ -112,6 +112,10 @@ void League::showLosingTeam() const
 	cout << losingTeam << endl;
 }
 
+void League::showLeadingScorer() const
+{
+}
+
 bool League::isEnded()
 {
 	return numberOfFixtures == playedFixtures;

@@ -238,6 +238,19 @@ int Team::getPoints()
 	return points;
 }
 
+Player* Team::getGoalLeader() const
+{
+	Player* goalLeader = lineup[0];
+
+	for (int i = 1; i < LINEUP_SIZE; i++)
+		lineup[i] >= goalLeader ? goalLeader = lineup[i] : 0;
+
+	for (int i = 0; i < benchSize; i++)
+		benchPlayers[i] >= goalLeader ? goalLeader = benchPlayers[i] : 0;
+
+	return goalLeader;
+}
+
 Player** Team::getLineup()
 {
 	return lineup;

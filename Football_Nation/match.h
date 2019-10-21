@@ -15,12 +15,12 @@ private:
 	int result[NUM_OF_RESULTS]; // index 0 = home result, index 1 = away result.
 	Referee* referee;
 	Match(const Match& other) = default;
+	void simulateAttack(Team* attackingTeam, Team* defendingTeam);
 
 public:
 	Match(Team* homeTeam, Team* awayTeam, Referee * referee);//Inside the constructor need to play Match random score and assign also randommly assign goal to player and score to winning team. 
-	void playMatch();
 	void show() const;
-	void simulateAttack(Team* attackingTeam, Team* defendingTeam);
+	void playMatch(); //move to private?
 
 	Team* getWinnerTeam() const; //returns the winner team. If match has ended with a tie, returns nullptr
 	Team* getHomeTeam() const;
