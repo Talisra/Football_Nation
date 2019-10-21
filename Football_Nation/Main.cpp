@@ -23,13 +23,16 @@ int main()
 	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0, nullptr);
 	Coach z("Zidan", 40, "French", (Role)2, nullptr);
 	Manager a("Arcadi", 60, "Russian", 10);
-	//Team t1("Hapoel", )
+	Team t1("Hapoel", &a);
 	++messi;
 	cout << messi;
 	cout << ronaldo;
 	cout << z;
 	cout << a;
-
+	t1.addCoach(&z);
+	//t1.addPlayer(&messi);
+	//t1.addPlayer(&ronaldo);
+	//cout << messi;
 
 //	ifstream inputFile("League.txt");
 //	League * league = readLeague(inputFile);
