@@ -48,6 +48,7 @@ public:
 	bool operator>=(const Team& otherTeam) const; //Team is bigger if team have more point
 	char* getName() const;
 	void scoreGoal();
+	int getPoints();
 
 private:
 	bool fillBench(Player* player); //try to fill a player in the bench. returns true if there is a room, and false if the bench is currenty full. an outside function will extend the bench array.

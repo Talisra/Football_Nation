@@ -30,6 +30,8 @@ void League::startSeason()
 	}
 }
 
+
+
 void League::setNumberOfReferees(int num)
 {
 	Referee** temp = new Referee*[num];
@@ -65,4 +67,46 @@ void League::addTeam(Team* team)
 	}
 	delete[] teams;
 	teams = tempTeam;
+}
+
+void League::showMostActiveReferee() const
+{
+
+	//TODO : add possible tie?
+	Referee* activeRef = referees[0];
+
+	for (int i = 1; i < numberOfReferees; i++)
+	{
+		activeRef->getGamesPlayed() > referees[i]->getGamesPlayed()  ? 0 : activeRef = referees[i];
+	}
+	cout << activeRef << endl;
+}
+
+void League::showLeadingTeam() const
+{
+	//TODO : add possible tie?
+	Team* leadingTeam = teams[0];
+
+	for (int i = 1; i < numberOfTeams; i++)
+	{
+		leadingTeam->getPoints() > teams[i]->getPoints() ? 0 : leadingTeam = teams[i];
+	}
+	cout << leadingTeam << endl;
+}
+
+void League::showLosingTeam() const
+{
+	//TODO tie?
+	Team* losingTeam = teams[0];
+
+	for (int i = 1; i < numberOfTeams; i++)
+	{
+		losingTeam->getPoints() > teams[i]->getPoints() ? losingTeam = teams[i] : 0;
+	}
+	cout << losingTeam << endl;
+}
+
+bool League::isEnded()
+{
+	return numberOfFixtures == playedFixtures;
 }

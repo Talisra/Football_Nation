@@ -35,7 +35,7 @@ public:
 	void startSeason();
 	const Fixture& playFixture();
 	void showLeadingTeam() const;
-	void showLoosingTeam() const;
+	void showLosingTeam() const;
 	void showLeadingScorer() const;
 	void showMostActiveReferee() const;
 	void show() const;
