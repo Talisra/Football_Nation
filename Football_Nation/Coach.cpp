@@ -14,14 +14,16 @@ Coach::Coach(const Coach& other):
 	setTeam(other.currentTeam);
 }
 
-void Coach::show() const
-{
-
-}
-
 Coach::~Coach() 
 {
 	delete[] currentTeam;
+}
+
+ostream& operator<<(ostream& os, const Coach& c)
+{
+	os << "Name: " << c.name << "," << "\tAge: " << c.age << ", Nationality: " << c.nationality << "\t\tRole: " << (int)c.getType() 
+		<< " Team: " << c.getCurrentTeam()->getName() << endl;
+	return os;
 }
 
 Role Coach::getType() const {return type; }
