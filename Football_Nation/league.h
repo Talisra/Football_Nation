@@ -28,7 +28,7 @@ public:
 		Team** teams = nullptr, int numberofreferees = 0,
 		Referee** referees = nullptr); //in the constructor, number of teams must be the size of team array!
 
-	~League();
+	virtual ~League();
 	void addTeam(Team * team);
 	void setNumberOfReferees(int numberOfreferees); //changes the number of referees in the league. any leftover referees will be eliminated from the league.
 	void addReferee(Referee* referee); //add a referee only if there is a room in the array.

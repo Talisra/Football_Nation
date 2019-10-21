@@ -3,6 +3,8 @@
 
 #include "person.h"
 
+const int MAX_RATING_POSITION = 4;
+
 class Referee : public Person
 {
 private:
@@ -13,6 +15,7 @@ private:
 public:
 	Referee(const char* name, int age, const char* nationality,int rating, int gamesPlayed);
 	void show() const;
+	const Referee& operator++();
 	Referee(const Referee& other) = delete;
 
 	int getGamesPlayed() const;
