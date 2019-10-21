@@ -12,8 +12,16 @@ Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee) : homeTeam(homeTe
 void Match::playMatch()
 {
 	//each team has the option to score goals in their turn to attack
-	simulateAttack(homeTeam,awayTeam);
-	simulateAttack(awayTeam,homeTeam);
+	simulateAttack(homeTeam, awayTeam);
+	simulateAttack(awayTeam, homeTeam);
+	++this->referee;
+
+	if (getResult()[0] == getResult()[1])        //Draw - add one point to each team
+	{
+		homeTeam += 1;
+		awayTeam += 1;
+	}
+	else getResult()[0] > getResult()[1] ? homeTeam += 3 : awayTeam += 3;    //Either home or away teams won
 }
 
 void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam) 

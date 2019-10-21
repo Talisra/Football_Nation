@@ -14,8 +14,15 @@ void Referee::show() const
 
 }
 
+const Referee& Referee::operator++()
+{
+	this->gamesPlayed++;
+	return *this;
+}
+
 int Referee::getGamesPlayed() const { return gamesPlayed; }
 int Referee::getRating() const { return rating; }
+
 
 void Referee::setGamesPlayed(int games) 
 {

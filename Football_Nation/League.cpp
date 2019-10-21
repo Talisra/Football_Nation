@@ -22,7 +22,9 @@ void League::startSeason()
 		{
 			Team* team1 = this->teams[(numberOfTeams -i +j)%numberOfTeams];
 			Team* team2 = this->teams[(numberOfTeams -1 -i-j)%numberOfTeams];
-			//TODO: algo incorrect....
+			//TODO: fix algo....
+
+			
 
 		}
 

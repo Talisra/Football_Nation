@@ -15,6 +15,7 @@ private:
 public:
 	Referee(const char* name, int age, const char* nationality,int rating, int gamesPlayed);
 	void show() const;
+	const Referee& operator++();
 	Referee(const Referee& other) = delete;
 
 	int getGamesPlayed() const;
