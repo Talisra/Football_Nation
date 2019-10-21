@@ -68,8 +68,15 @@ int main()
 	t2.addToLineup(&ooo2);
 	t2.addToLineup(&ooo3);
 
+	t2.removeFromLineup(&mich);
+	t2.addToLineup(&mich);
+
 	cout << t1 <<endl;
 	cout << t2 << "\n\n---------------------------------" << endl;
+	Match match(&t2, &t1, &ref);
+	cout << match << endl;
+	match.playMatch();
+	cout << match << endl;
 
 //	ifstream inputFile("League.txt");
 //	League * league = readLeague(inputFile);

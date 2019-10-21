@@ -33,6 +33,7 @@ public:
 	~Team();
 
 	void setManager(Manager * manger); 
+	void addPoints(int points); // a negative number can be delievered here, but a team's point cannot go below 0.
 	void addCoach(Coach * coach);
 	void addPlayer(Player * player);
 	void removePlayer(Player* Player); 
@@ -44,6 +45,7 @@ public:
 	bool operator>=(const Team& otherTeam) const; //Team is bigger if team have more point
 	friend ostream& operator<<(ostream& os, const Team& team);
 	char* getName() const;
+	int getLineupSize() const;
 	void scoreGoal();
 	int getPoints();
 	Player* getGoalLeader() const;

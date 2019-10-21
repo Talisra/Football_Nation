@@ -58,6 +58,7 @@ void Team::addPlayer(Player* player)
 	{
 		if (!fillBench(player))
 		{
+			cout << "wtf pls no";
 			Player** tempArray = new Player * [benchSize * 2];
 			for (int i = 0; i < benchSize; i++)
 			{
@@ -87,7 +88,11 @@ void Team::addToLineup(Player* player)
 	if (currentLineup >= LINEUP_SIZE) //return if the lineup is full
 		return;
 
-	removePlayer(player);
+	for (int i = 0; i < benchSize; i++)
+	{
+		if (benchPlayers[i] == player)
+			benchPlayers[i] = nullptr;
+	}
 	lineup[currentLineup] = player;
 	currentLineup++;
 }
@@ -182,6 +187,11 @@ void Team::removeCoach(Coach* coach)
 	}
 }
 
+void Team::addPoints(int points)
+{
+	this->points += points;
+}
+
 Team Team::operator+(int points) const
 {
 	return Team(name, manager, coaches, lineup, benchPlayers, this->points + points);
@@ -229,13 +239,17 @@ char* Team::getName() const
 	return name;
 }
 
+int Team::getLineupSize() const
+{
+	return currentLineup;
+}
+
 void Team::scoreGoal()
 {
-	cout << name << "Scored a goal!" << endl;
+	cout << name << " Scored a goal!" << endl;
 	srand(time(NULL));
 	int random = rand() % LINEUP_SIZE;
 	++(this->getLineup()[random]);    //add a goal to a player from team
-	
 }
 
 int Team::getPoints()

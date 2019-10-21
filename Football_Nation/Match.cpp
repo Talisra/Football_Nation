@@ -6,27 +6,28 @@
 
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee) : homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)
 {
-	playMatch();
+
 }
 
 void Match::playMatch()
 {
+	if (homeTeam->getLineupSize() != LINEUP_SIZE || awayTeam->getLineupSize() != LINEUP_SIZE) //check that the team has enough players in the lineup
+		return;
 	//each team has the option to score goals in their turn to attack
 	simulateAttack(homeTeam, awayTeam);
 	simulateAttack(awayTeam, homeTeam);
-	++this->referee;
+	++this->referee; //adds a game to the referee
 
-	if (getResult()[0] == getResult()[1])        //Draw - add one point to each team
+	if (getResult(0) == getResult(1))        //Draw - add one point to each team
 	{
-		homeTeam += 1;
-		awayTeam += 1;
+		homeTeam->addPoints(1);
+		awayTeam->addPoints(1);
 	}
-	else getResult()[0] > getResult()[1] ? homeTeam += 3 : awayTeam += 3;    //Either home or away teams won
+	else getResult(0) > getResult(1) ? homeTeam->addPoints(3) : awayTeam->addPoints(3);    //Either home or away teams won
 }
 
 void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam) 
 {
-	
 	int attackingScore = 0;
 	int defendingScore = 0;
 	int goalKeepingScore = 0;
@@ -76,18 +77,13 @@ Referee* Match::getReferee() const
 	return referee;
 }
 
-int* Match::getResult() const //TODO 
+int Match::getResult(int index) const
 {
-	return 0;
-}
-
-void Match::show() const
-{
-
+	return result[index];
 }
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	os << "Home Team: " << match.getHomeTeam()->getName() << " vs " << "Away Team: " << match.getAwayTeam()->getName() << ", result is: " << match.getResult() << endl;
+	os << "Home Team: " << match.getHomeTeam()->getName() << " VS " << "Away Team: " << " " << match.getAwayTeam()->getName() << ", result is: " << match.getResult(0) << ":" << match.getResult(1) << endl;
 	return os;
 }
