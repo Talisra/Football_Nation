@@ -194,7 +194,7 @@ void Team::scoreGoal()
 {
 	cout << name << "Scored a goal!" << endl;
 	srand(time(NULL));
-	int random = rand() % 5;
+	int random = rand() % LINEUP_SIZE;
 	++(this->getLineup()[random]);    //add a goal to a player from team
 	
 }
