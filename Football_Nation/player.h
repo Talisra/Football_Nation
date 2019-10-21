@@ -22,7 +22,7 @@ public:
 		const char* nationality,
 		int attack, int defence,
 		int goalkeeping, int goalScored = 0, int value=0,
-		Role role= (Role)0, Team * currentTeam = nullptr);
+		Role role= (Role)0);
 
 	friend ostream& operator<<(ostream& os, const Player& p);
 	const Player& operator++();

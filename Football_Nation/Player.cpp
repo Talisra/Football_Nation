@@ -1,8 +1,8 @@
 #include "player.h"
 
 Player::Player(const char* name, int age, const char* nationality, int attack, int defence, int goalkeeping, int goalScored, int value,
-	Role role, Team* currentTeam) : Person(name, age, nationality), attack(attack), defence(defence), goalkeeping(goalkeeping), goalScored(goalScored), value(value),
-	role(role), currentTeam(currentTeam)
+	Role role) : Person(name, age, nationality), attack(attack), defence(defence), goalkeeping(goalkeeping), goalScored(goalScored), value(value),
+	role(role), currentTeam(nullptr)
 {
 
 }

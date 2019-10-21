@@ -1,18 +1,31 @@
 #include "team.h"
 #include "coach.h"
 #include "player.h"
+#include "manager.h"
 #include <time.h>
 
-Team::Team(const char* name, Manager* manager, Coach* coaches, Player* lineup, Player* benchPlayers, int points)
+Team::Team(const char* name, Manager* manager)
 {
 	this->name = new char[sizeof(name) + 1];
 	strcpy(this->name, name);
-	this->manager = manager;
+	this->setManager(manager);
 	this->coaches = new Coach*[INITIAL_COACH_SIZE];
+	coachesSize = INITIAL_COACH_SIZE;
+	for (int i = 0; i < coachesSize; i++)
+	{
+		coaches[i] = nullptr;
+	}
 	this->lineup = new Player*[LINEUP_SIZE];
+	for (int i = 0; i < LINEUP_SIZE; i++)
+	{
+		lineup[i] = nullptr;
+	}
 	this->benchPlayers = new Player*[INITIAL_BENCH_SIZE];
-	benchSize = 0;
-	coachesSize = 0;
+	benchSize = INITIAL_BENCH_SIZE;
+	for (int i = 0; i < benchSize; i++)
+	{
+		benchPlayers[i] = nullptr;
+	}
 	currentLineup = 0;
 	this->points = 0;
 }
@@ -120,6 +133,8 @@ void Team::removeFromLineup(Player* player)
 void Team::setManager(Manager* manager)
 {
 	this->manager = manager;
+	if (manager != nullptr)
+		manager->setTeam(this);
 }
 
 void Team::addCoach(Coach* coach)
@@ -164,7 +179,7 @@ void Team::removeCoach(Coach* coach)
 
 Team Team::operator+(int points) const
 {
-	return Team(name, manager, *coaches, *lineup, *benchPlayers, this->points + points);
+	return Team(name, manager, coaches, lineup, benchPlayers, this->points + points);
 }
 
 bool Team::operator>=(const Team& otherTeam) const
@@ -173,15 +188,34 @@ bool Team::operator>=(const Team& otherTeam) const
 }
 
 
-ostream& operator<<(ostream& os, const Player& player)
+ostream& operator<<(ostream& os, const Team& team)
 {
-	const char* teamName;
-	if (player.currentTeam == nullptr)
-		teamName = "None";
+	os << "Team Name: " << team.name << "," << "\tPoints: " << team.points << "\n|| Manager || ";
+	if (team.manager != nullptr)
+	{
+		os << *team.manager;
+	}
 	else
-		teamName = player.currentTeam->getName();
-	os << "Name: " << player.name << "," << "\tAge: " << player.age << ", Nationality: " << player.nationality << "\t\t {| Atk/Def/Gkp: " << player.attack << "/" << player.defence << "/" << player.goalkeeping
-		<< " |} Role: " << (int)player.getRole() << ", Value: " << player.value << ", Total goals: " << player.goalScored << ", Team: " << teamName << endl;
+	{
+		os << "None ";
+	}
+		os << "\n|| Coaches ||" << endl;
+	for (int i = 0; i < team.coachesSize; i++)
+	{
+		if (team.coaches[i] != nullptr)
+			os << *(team.coaches[i]);
+	}
+	os << "|| Players ||\n--Lineup--" << endl;
+	for (int i = 0; i < team.currentLineup; i++)
+	{
+		os << *team.lineup[i];
+	}
+	os << "--on bench--" << endl;
+	for (int i = 0; i < team.benchSize; i++)
+	{
+		if (team.benchPlayers[i] != nullptr)
+			os << *team.benchPlayers[i];
+	}
 	return os;
 }
 
@@ -194,7 +228,7 @@ void Team::scoreGoal()
 {
 	cout << name << "Scored a goal!" << endl;
 	srand(time(NULL));
-	int random = rand() % 5;
+	int random = rand() % LINEUP_SIZE;
 	++(this->getLineup()[random]);    //add a goal to a player from team
 	
 }

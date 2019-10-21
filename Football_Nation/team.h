@@ -21,11 +21,7 @@ class Team
 public:
 
 	Team(const char* name,
-		Manager * manager = nullptr,
-		Coach * coaches = nullptr,
-		Player * lineup = nullptr,
-		Player * benchPlayers = nullptr,
-		int points = 0);
+		Manager * manager = nullptr);
 
 	Team(const char* name,
 		Manager* manager,
@@ -46,6 +42,7 @@ public:
 	Player** getLineup(); //returns the array of lineup
 	Team operator+(int points) const; //TODO - might not be const 'cause it changes the class
 	bool operator>=(const Team& otherTeam) const; //Team is bigger if team have more point
+	friend ostream& operator<<(ostream& os, const Team& team);
 	char* getName() const;
 	void scoreGoal();
 	int getPoints();

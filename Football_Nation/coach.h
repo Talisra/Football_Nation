@@ -16,7 +16,6 @@ public:
 		Role type = (Role) 0,
 		Team* currentTeam = nullptr);
 	Coach(const Coach& other);
-	~Coach();
 
 	virtual const Coach& operator=(const Coach& other) = delete;
 	friend ostream& operator<<(ostream& os, const Coach& c);

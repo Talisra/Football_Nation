@@ -8,6 +8,7 @@ using namespace std;
 #include "referee.h"
 #include "league.h"
 #include "fixture.h"
+#include "coach_player.h"
 
 /*
 League * readLeague(ifstream& inputFile);
@@ -19,20 +20,40 @@ Referee * readReferee(ifstream& inputFile);
 */
 int main()
 {
-	Player messi("Messi", 32, "Spain", 40, 30, 10, 0, 10000, (Role)0, nullptr);
-	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0, nullptr);
+	Player messi("Messi", 32, "Spain", 40, 30, 10, 0, 10000, (Role)0);
+	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0);
+	Player zlatan("Zlatan", 39, "God", 100, 20, 10, 0, 8000, (Role)0);
+	Player m("AAA", 20, "Something", 20, 20, 20, 0, 1000, (Role)2);
 	Coach z("Zidan", 40, "French", (Role)2, nullptr);
+	CoachPlayer strange("Dr. Strange", 30, "British", z, messi);
 	Manager a("Arcadi", 60, "Russian", 10);
 	Team t1("Hapoel", &a);
 	++messi;
-	cout << messi;
-	cout << ronaldo;
-	cout << z;
-	cout << a;
 	t1.addCoach(&z);
-	//t1.addPlayer(&messi);
-	//t1.addPlayer(&ronaldo);
-	//cout << messi;
+	t1.setManager(nullptr);
+	t1.setManager(&a);
+	t1.addPlayer(&messi);
+	t1.addPlayer(&ronaldo);
+	t1.addPlayer(&strange);
+	t1.addPlayer(&zlatan);
+	t1.addPlayer(&m);
+
+	Player mich("Michael Jordan", 50, "USA", 10, 10, 50, 0, 7000, (Role)3);
+	Player zehavi("Zehavi", 30, "Israeli", 50, 30, 20, 0, 4000, (Role)2);
+	Player ooo1("Who", 30, "As", 40, 40, 40, 0, 4000, (Role)3);
+	Player ooo2("Who2", 30, "As", 40, 40, 40, 0, 4000, (Role)3);
+	Player ooo3("Who3", 30, "As", 40, 40, 40, 0, 4000, (Role)3);
+	Manager b("E.T", 500, "Alien", 400);
+	Team t2("Macabbi", &b);
+	Coach coach("Mr. coach", 30, "Coacher", (Role)2, nullptr);
+	t2.addCoach(&coach);
+	t2.addPlayer(&mich);
+	t2.addPlayer(&zehavi);
+	t2.addPlayer(&ooo1);
+	t2.addPlayer(&ooo2);
+	t2.addPlayer(&ooo3);
+	cout << t1 <<endl;
+	cout << t2 << endl;
 
 //	ifstream inputFile("League.txt");
 //	League * league = readLeague(inputFile);

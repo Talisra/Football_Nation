@@ -14,11 +14,6 @@ Coach::Coach(const Coach& other):
 	setTeam(other.currentTeam);
 }
 
-Coach::~Coach() 
-{
-	delete[] currentTeam;
-}
-
 ostream& operator<<(ostream& os, const Coach& c)
 {
 	const char* teamName;
@@ -44,7 +39,7 @@ void Coach::setTeam(Team* team)
 	if (currentTeam != team)
 	{
 		if (currentTeam != nullptr)
-		//currentTeam->removeCoach(this);
+			currentTeam->removeCoach(this);
 		currentTeam = team;
 		if (currentTeam != nullptr)
 		{
