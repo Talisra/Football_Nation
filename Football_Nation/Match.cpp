@@ -80,6 +80,6 @@ void Match::show() const
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	/*os << "Home Team: " << match.getHomeTeam << " vs " << "Away Team: " << match.getAwayTeam << ",result is: " << match.getResult + endl;*/
+	os << "Home Team: " << match.getHomeTeam()->getName() << " vs " << "Away Team: " << match.getAwayTeam()->getName() << ", result is: " << match.getResult() << endl;
 	return os;
 }

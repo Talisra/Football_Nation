@@ -9,7 +9,7 @@ protected:
 	char* name;//[NAME_SIZE];
 	int age;
 	char* nationality; //[NAME_SIZE] ;
-	Person(const Person& other) = delete;
+	//Person(const Person& other) = delete;
 	virtual ~Person();
 
 public:
