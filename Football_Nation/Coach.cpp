@@ -22,7 +22,7 @@ Coach::~Coach()
 ostream& operator<<(ostream& os, const Coach& c)
 {
 	os << "Name: " << c.name << "," << "\tAge: " << c.age << ", Nationality: " << c.nationality << "\t\tRole: " << (int)c.getType() 
-		<< " Team: " << (c.getCurrentTeam() == nullptr)? "None" : c.getCurrentTeam()->getName() << endl;
+		<< " Team: " << (c.getCurrentTeam() == nullptr)? "None" : c.getCurrentTeam()->getName() << "wat";
 	return os;
 }
 
