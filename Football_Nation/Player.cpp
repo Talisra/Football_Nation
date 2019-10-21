@@ -88,9 +88,16 @@ void Player::show() const
 
 }
 
-Player Player::operator++(int)
+ostream& operator<<(ostream& os, const Player& player)
 {
-	goalScored++;
+	os << "Name: " << player.name << "," << "\tAge: " << player.age << ", Nationality: " << player.nationality << "\t\t {| Atk/Def/Gkp: " << player.attack << "/" << player.defence << "/" << player.goalkeeping
+		<< " |} Role: " << (int)player.getRole() << ", Value: " << player.value << ", Total goals: " << player.goalScored << endl;
+	return os;
+}
+
+const Player& Player::operator++()
+{
+	this->goalScored++;
 	return *this;
 }
 

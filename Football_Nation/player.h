@@ -24,7 +24,8 @@ public:
 		int goalkeeping, int goalScored = 0, int value=0,
 		Role role= (Role)0, Team * currentTeam = nullptr);
 
-	Player operator++(int);
+	friend ostream& operator<<(ostream& os, const Player& p);
+	const Player& operator++();
 	bool operator >=(const Player& player) const; //Player is bigger if he scored more goles
 
 	int getTotalStats() const; //TODO: IMPLEMENT THE FUNCTION
