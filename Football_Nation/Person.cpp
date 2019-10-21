@@ -17,6 +17,7 @@ Person::~Person()
 	delete []nationality;
 }
 
+
 //void Person::show() const {}
 //abstact class - implement in children
 
