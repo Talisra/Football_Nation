@@ -90,8 +90,13 @@ void Player::show() const
 
 ostream& operator<<(ostream& os, const Player& player)
 {
+	const char* teamName;
+	if (player.currentTeam == nullptr)
+		teamName = "None";
+	else
+		teamName = player.currentTeam->getName();
 	os << "Name: " << player.name << "," << "\tAge: " << player.age << ", Nationality: " << player.nationality << "\t\t {| Atk/Def/Gkp: " << player.attack << "/" << player.defence << "/" << player.goalkeeping
-		<< " |} Role: " << (int)player.getRole() << ", Value: " << player.value << ", Total goals: " << player.goalScored << endl;
+		<< " |} Role: " << (int)player.getRole() << ", Value: " << player.value << ", Total goals: " << player.goalScored << ", Team: " << teamName << endl;
 	return os;
 }
 

@@ -21,8 +21,13 @@ Coach::~Coach()
 
 ostream& operator<<(ostream& os, const Coach& c)
 {
+	const char* teamName;
+	if (c.getCurrentTeam() == nullptr)
+		teamName = "None";
+	else
+		teamName = c.getCurrentTeam()->getName();
 	os << "Name: " << c.name << "," << "\tAge: " << c.age << ", Nationality: " << c.nationality << "\t\tRole: " << (int)c.getType() 
-		<< " Team: " << (c.getCurrentTeam() == nullptr)? "None" : c.getCurrentTeam()->getName() << "wat";
+		<< ", Team: " << teamName << endl;
 	return os;
 }
 

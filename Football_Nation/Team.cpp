@@ -15,7 +15,6 @@ Team::Team(const char* name, Manager* manager, Coach* coaches, Player* lineup, P
 	coachesSize = 0;
 	currentLineup = 0;
 	this->points = 0;
-
 }
 
 Team::Team(const char* name, Manager* manager, Coach** coaches, Player** lineup, Player** benchPlayers, int points)

@@ -44,7 +44,6 @@ public:
 	void setGoalkeeping(int goalkeeping);
 	void setValue(int val);
 	void setRole(Role role);
-	void setTeam(Team* team);
 
 protected:
 	int attack;
@@ -54,7 +53,7 @@ protected:
 	int value;
 	Role role;
 	Team* currentTeam;
-
+	void setTeam(Team* team); // changing the team is only available through Team
 	Player(const Player& other);
 
 };
