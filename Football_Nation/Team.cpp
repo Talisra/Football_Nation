@@ -1,5 +1,6 @@
 #include "team.h"
 #include "coach.h"
+#include <time.h>
 
 
 Team::Team(const char* name, Manager* manager, Coach* coaches, Player* lineup, Player* benchPlayers, int points)
@@ -170,6 +171,20 @@ Team Team::operator+(int points) const
 bool Team::operator>=(const Team& otherTeam) const
 {
 	return points >= otherTeam.points;
+}
+
+char* Team::getName() const
+{
+	return name;
+}
+
+void Team::scoreGoal()
+{
+	cout << name << "Scored a goal!" << endl;
+	srand(time(NULL));
+	int random = rand() % 5;
+//	++lineup[random];    //add a goal to a player from attacking team
+	
 }
 
 Player** Team::getLineup()

@@ -18,7 +18,7 @@ void Match::playMatch()
 
 void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam) 
 {
-	/*
+	
 	int attackingScore = 0;
 	int defendingScore = 0;
 	int goalKeepingScore = 0;
@@ -26,11 +26,11 @@ void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam)
 	for (int i = 0; i < LINEUP_SIZE; i++) 
 	{
 		Player* attPlayer = attackingTeam->getLineup()[i];
-		attackingScore += attPlayer->getAttack + (attPlayer->getRole == 0 ? STRIKER_BONUS : 0);                 //player is a striker
+		attackingScore += attPlayer->getAttack() + (attPlayer->getRole() == (Role) 0 ? STRIKER_BONUS : 0);                 //player is a striker
 
 		Player* defPlayer = defendingTeam->getLineup()[i];
-		defendingScore += defPlayer->getDefence + (defPlayer->getRole == 1 ? DEFENDER_BONUS : 0);               //player is a defender
-		goalKeepingScore += (defPlayer->getRole == 2 ? defPlayer->getDefence + defPlayer->getGoalkeeping : 0);  //player is a goalkepper	
+		defendingScore += defPlayer->getDefence() + (defPlayer->getRole() == (Role) 1 ? DEFENDER_BONUS : 0);               //player is a defender
+		goalKeepingScore += (defPlayer->getRole() == (Role) 2 ? defPlayer->getDefence() + defPlayer->getGoalkeeping() : 0);  //player is a goalkepper	
 	}
 
 	for (int i = 0; i < ATTACK_ROUNDS; i++)
@@ -39,16 +39,15 @@ void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam)
 		int	random = rand() % 22 + 2;
 		if (attackingScore + random > defendingScore + goalKeepingScore) 
 		{
-			cout << attackingTeam->getName << 'Scored a goal!' << endl;
-			attackingTeam->getLineup()[i]++;    //add a goal to a player from attacking team
-			if (attackingTeam == this.homeTeam)
-				this.result[0] += 1;
+			attackingTeam->scoreGoal();
+			if (attackingTeam == this->homeTeam)
+				this->result[0] += 1;
 			else
 			{
-				this.result[1] += 1;
+				this->result[1] += 1;
 			}
 		}
-	}*/
+	}
 }
 
 Team* Match::getWinnerTeam() const

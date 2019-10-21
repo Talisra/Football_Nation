@@ -1,6 +1,6 @@
 #include "referee.h"
 
-const int Referee::arr[] = { 3, 10, 50, 100, 300, 1000 };
+const int Referee::arr[] = {10, 30, 100, 300, 1000 };
 
 Referee::Referee(const char* name, int age, const char* nationality, int rating = 0, int gamesPlayed = 0):
 	Person(name,age,nationality)
@@ -24,7 +24,7 @@ void Referee::setGamesPlayed(int games)
 
 void Referee::setRating()
 {
-	if (getGamesPlayed() >= arr[5]) 
+	if (getGamesPlayed() >= arr[4]) 
 	{
 		this->rating = 5;
 		return;
@@ -37,3 +37,5 @@ void Referee::setRating()
 	}
 	this->rating = counter;
 }
+
+//TODO - add to playmatch increase refferee matches,

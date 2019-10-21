@@ -1,16 +1,33 @@
 #include "league.h"
 
-League::League(const char* name, int numberOfTeams, Team** teams, int numberofreferees, Referee** referees, int numberOfFixtures) : numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees),
-referees(referees), numberOfFixtures(numberOfFixtures), fixtures(nullptr)
+League::League(const char* name, int numberOfTeams, Team** teams, int numberofreferees, Referee** referees) : numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees),
+referees(referees), fixtures(nullptr)
 {
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 	playedFixtures = 0;
+	numberOfFixtures = (numberOfTeams - 1) * 2;
 }
 
 League::~League()
 {
 
+}
+
+void League::startSeason()
+{
+	for (int i = 0; i < numberOfFixtures; i++)    // i = overall fixtures to create
+	{
+		int round = 0;
+		for (int j = 0; j < numberOfTeams/2; j++) 
+		{
+			Team* team1 = this->teams[(j+numberOfTeams-round)%numberOfTeams];
+			Team* team2 = this->teams[(numberOfTeams -1 - j- round)%numberOfTeams];
+			//TODO: algo might be incorrect..need to check this
+
+		}
+
+	}
 }
 
 void League::setNumberOfReferees(int num)

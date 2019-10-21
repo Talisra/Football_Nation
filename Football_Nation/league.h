@@ -26,7 +26,7 @@ private:
 public:
 	League(const char* name, int numberOfTeams,
 		Team** teams = nullptr, int numberofreferees = 0,
-		Referee** referees = nullptr, int numberOfFixtures = 0); //in the constructor, number of teams must be the size of team array!
+		Referee** referees = nullptr); //in the constructor, number of teams must be the size of team array!
 
 	~League();
 	void addTeam(Team * team);
