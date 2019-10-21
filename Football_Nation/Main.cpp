@@ -2,6 +2,7 @@
 using namespace std;
 #include <fstream>
 
+#include "referee.h"
 #include "player.h"
 #include "coach.h"
 #include "manager.h"
@@ -20,6 +21,8 @@ Referee * readReferee(ifstream& inputFile);
 */
 int main()
 {
+	Referee ref("Cpp", 25, "Language", 1, 0);
+
 	Player messi("Messi", 32, "Spain", 40, 30, 10, 0, 10000, (Role)0);
 	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0);
 	Player zlatan("Zlatan", 39, "God", 100, 20, 10, 0, 8000, (Role)0);
@@ -38,6 +41,12 @@ int main()
 	t1.addPlayer(&zlatan);
 	t1.addPlayer(&m);
 
+	t1.addToLineup(&messi);
+	t1.addToLineup(&ronaldo);
+	t1.addToLineup(&strange);
+	t1.addToLineup(&zlatan);
+	t1.addToLineup(&m);
+
 	Player mich("Michael Jordan", 50, "USA", 10, 10, 50, 0, 7000, (Role)3);
 	Player zehavi("Zehavi", 30, "Israeli", 50, 30, 20, 0, 4000, (Role)2);
 	Player ooo1("Who", 30, "As", 40, 40, 40, 0, 4000, (Role)3);
@@ -52,8 +61,15 @@ int main()
 	t2.addPlayer(&ooo1);
 	t2.addPlayer(&ooo2);
 	t2.addPlayer(&ooo3);
+
+	t2.addToLineup(&mich);
+	t2.addToLineup(&zehavi);
+	t2.addToLineup(&ooo1);
+	t2.addToLineup(&ooo2);
+	t2.addToLineup(&ooo3);
+
 	cout << t1 <<endl;
-	cout << t2 << endl;
+	cout << t2 << "\n\n---------------------------------" << endl;
 
 //	ifstream inputFile("League.txt");
 //	League * league = readLeague(inputFile);

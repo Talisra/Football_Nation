@@ -54,17 +54,21 @@ Team::~Team()
 
 void Team::addPlayer(Player* player)
 {
-	if (!fillBench(player))
+	if (player != nullptr)
 	{
-		Player** tempArray = new Player*[benchSize * 2];
-		for (int i = 0; i < benchSize; i++)
+		if (!fillBench(player))
 		{
-			tempArray[i] = benchPlayers[i];
+			Player** tempArray = new Player * [benchSize * 2];
+			for (int i = 0; i < benchSize; i++)
+			{
+				tempArray[i] = benchPlayers[i];
+			}
+			tempArray[benchSize] = player;
+			benchSize *= 2;
+			delete[] benchPlayers;
+			benchPlayers = tempArray;
 		}
-		tempArray[benchSize] = player;
-		benchSize *= 2;
-		delete[] benchPlayers;
-		benchPlayers = tempArray;
+		player->setTeam(this);
 	}
 }
 
@@ -109,6 +113,7 @@ void Team::removePlayer(Player* player)
 			benchPlayers[i] = nullptr;
 		}
 	}
+	player->setTeam(nullptr);
 }
 
 

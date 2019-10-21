@@ -34,6 +34,7 @@ void League::startSeason()
 const Fixture& League::playFixture()
 {
 	// TODO
+	return *this->fixtures[0]; // ---------> IMPORTANT <-----------  only for the code to compile
 }
 
 
