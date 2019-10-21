@@ -14,7 +14,6 @@ protected:
 
 public:
 	Person(const char* name, int age, const char* nationality);
-	virtual void show() const = 0;
 	//virtual const Person& operator=(const Person& other) = 0;
 
 	char* getName() const;
