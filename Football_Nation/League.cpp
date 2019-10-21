@@ -18,16 +18,20 @@ void League::startSeason()
 {
 	for (int i = 0; i < numberOfFixtures; i++)    // i = overall fixtures to create
 	{
-		int round = 0;
 		for (int j = 0; j < numberOfTeams/2; j++) 
 		{
-			Team* team1 = this->teams[(j+numberOfTeams-round)%numberOfTeams];
-			Team* team2 = this->teams[(numberOfTeams -1 - j- round)%numberOfTeams];
-			//TODO: algo might be incorrect..need to check this
+			Team* team1 = this->teams[(numberOfTeams -i +j)%numberOfTeams];
+			Team* team2 = this->teams[(numberOfTeams -1 -i-j)%numberOfTeams];
+			//TODO: algo incorrect....
 
 		}
 
 	}
+}
+
+const Fixture& League::playFixture()
+{
+	// TODO
 }
 
 
