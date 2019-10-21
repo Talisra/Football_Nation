@@ -86,7 +86,7 @@ void League::showMostActiveReferee() const
 	{
 		activeRef->getGamesPlayed() > referees[i]->getGamesPlayed()  ? 0 : activeRef = referees[i];
 	}
-	cout << activeRef << endl;
+	cout << &activeRef << endl;
 }
 
 void League::showLeadingTeam() const
@@ -98,7 +98,7 @@ void League::showLeadingTeam() const
 	{
 		leadingTeam->getPoints() > teams[i]->getPoints() ? 0 : leadingTeam = teams[i];
 	}
-	cout << leadingTeam << endl;
+	cout << &leadingTeam << endl;
 }
 
 void League::showLosingTeam() const
@@ -110,11 +110,18 @@ void League::showLosingTeam() const
 	{
 		losingTeam->getPoints() > teams[i]->getPoints() ? losingTeam = teams[i] : 0;
 	}
-	cout << losingTeam << endl;
+	cout << &losingTeam << endl;
 }
 
 void League::showLeadingScorer() const
 {
+	Player* goalLeader = this->teams[0]->getGoalLeader();
+
+	for (int i = 0; i < numberOfTeams ; i++) 
+	{
+		this->teams[i]->getGoalLeader() >= goalLeader ? goalLeader = teams[i]->getGoalLeader() : 0 ;
+	}
+	cout << &goalLeader << endl;
 }
 
 bool League::isEnded()
