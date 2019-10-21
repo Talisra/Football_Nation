@@ -12,7 +12,7 @@ const int DEFENDER_BONUS = 3;
 
 class Player : virtual public Person
 {
-
+	friend Team;
 public:
 	
 	void show() const; //TODO: IMPLEMENT THE FUNCTION

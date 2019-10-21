@@ -1,7 +1,7 @@
 #include "team.h"
 #include "coach.h"
+#include "player.h"
 #include <time.h>
-
 
 Team::Team(const char* name, Manager* manager, Coach* coaches, Player* lineup, Player* benchPlayers, int points)
 {
