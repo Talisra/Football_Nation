@@ -1,5 +1,7 @@
 #include "player.h"
 
+const char* playerRoles[] = { "Striker", "Defender", "GoalKepper", "Midfielder" };
+
 Player::Player(const char* name, int age, const char* nationality, int attack, int defence, int goalkeeping, int goalScored, int value,
 	Role role) : Person(name, age, nationality), attack(attack), defence(defence), goalkeeping(goalkeeping), goalScored(goalScored), value(value),
 	role(role), currentTeam(nullptr)
@@ -96,7 +98,7 @@ ostream& operator<<(ostream& os, const Player& player)
 	else
 		teamName = player.currentTeam->getName();
 	os << "Name: " << player.name << "," << "\tAge: " << player.age << ", Nationality: " << player.nationality << "\t\t {| Atk/Def/Gkp: " << player.attack << "/" << player.defence << "/" << player.goalkeeping
-		<< " |} Role: " << (int)player.getRole() << ", Value: " << player.value << ", Total goals: " << player.goalScored << ", Team: " << teamName << endl;
+		<< " |} Role: " << playerRoles[(int)player.getRole()] << ", Value: " << player.value << ", Total goals: " << player.goalScored << ", Team: " << teamName << endl;
 	return os;
 }
 

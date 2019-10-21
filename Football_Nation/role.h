@@ -3,4 +3,5 @@
 
 enum class Role { Striker, Defender, Goalkeeper, Midfielder };
 
+
 #endif // !__ROLE_H
