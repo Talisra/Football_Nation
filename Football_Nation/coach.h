@@ -15,6 +15,7 @@ public:
 		const char* nationality,
 		Role type = (Role) 0,
 		Team* currentTeam = nullptr);
+	Coach(const Coach& other);
 	~Coach();
 
 	virtual const Coach& operator=(const Coach& other) = delete;
@@ -31,8 +32,6 @@ public:
 protected:
 	Role type;
 	Team* currentTeam;
-	Coach(const Coach& other);
-
 };
 
 #endif //__COACH_H
