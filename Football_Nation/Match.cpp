@@ -40,12 +40,7 @@ void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam)
 		if (attackingScore + random > defendingScore + goalKeepingScore) 
 		{
 			attackingTeam->scoreGoal();
-			if (attackingTeam == this->homeTeam)
-				this->result[0] += 1;
-			else
-			{
-				this->result[1] += 1;
-			}
+			attackingTeam == this->homeTeam ? this->result[0] += 1 : this->result[1] += 1;
 		}
 	}
 }
