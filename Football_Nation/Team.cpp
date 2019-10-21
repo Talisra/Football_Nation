@@ -58,7 +58,6 @@ void Team::addPlayer(Player* player)
 	{
 		if (!fillBench(player))
 		{
-			cout << "wtf pls no";
 			Player** tempArray = new Player * [benchSize * 2];
 			for (int i = 0; i < benchSize; i++)
 			{
@@ -87,11 +86,12 @@ void Team::addToLineup(Player* player)
 
 	if (currentLineup >= LINEUP_SIZE) //return if the lineup is full
 		return;
-
 	for (int i = 0; i < benchSize; i++)
 	{
 		if (benchPlayers[i] == player)
 			benchPlayers[i] = nullptr;
+		if (i == benchSize)
+			return;
 	}
 	lineup[currentLineup] = player;
 	currentLineup++;
