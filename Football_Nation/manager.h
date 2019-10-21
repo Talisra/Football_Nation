@@ -7,7 +7,7 @@ class Team;
 
 class Manager : public Person
 {
-
+	friend class Team;
 private:
 	int yearsOfExperience;
 	Team * currentTeam;

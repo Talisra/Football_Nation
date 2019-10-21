@@ -2,8 +2,11 @@
 #define __TEAM_H
 
 #include <iostream>
+#include "manager.h"
+#include "player.h"
+#include "coach.h"
+#include <time.h>
 using namespace std;
-
 
 class Coach;
 class Player;
@@ -15,15 +18,10 @@ const int INITIAL_COACH_SIZE = 3; // size of initial size of the coach array. it
 
 class Team 
 {
-
 public:
 
 	Team(const char* name,
-		Manager * manager = nullptr,
-		Coach * coaches = nullptr,
-		Player * lineup = nullptr,
-		Player * benchPlayers = nullptr,
-		int points = 0);
+		Manager * manager = nullptr);
 
 	Team(const char* name,
 		Manager* manager,

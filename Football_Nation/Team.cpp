@@ -1,9 +1,8 @@
 #include "team.h"
-#include "coach.h"
-#include <time.h>
 
 
-Team::Team(const char* name, Manager* manager, Coach* coaches, Player* lineup, Player* benchPlayers, int points)
+
+Team::Team(const char* name, Manager* manager)
 {
 	this->name = new char[sizeof(name) + 1];
 	strcpy(this->name, name);
@@ -53,6 +52,7 @@ void Team::addPlayer(Player* player)
 		delete[] benchPlayers;
 		benchPlayers = tempArray;
 	}
+	player->setTeam(this);
 }
 
 
@@ -96,6 +96,7 @@ void Team::removePlayer(Player* player)
 			benchPlayers[i] = nullptr;
 		}
 	}
+	player->setTeam(nullptr);
 }
 
 
@@ -119,7 +120,15 @@ void Team::removeFromLineup(Player* player)
 
 void Team::setManager(Manager* manager)
 {
-	this->manager = manager;
+	if (manager != this->manager)
+	{
+		this->manager->setTeam(nullptr);
+		if (manager != nullptr) //set new team only if its not nullptr
+		{
+			manager->setTeam(this);
+			this->manager = manager;
+		}
+	}
 }
 
 void Team::addCoach(Coach* coach)
@@ -164,7 +173,7 @@ void Team::removeCoach(Coach* coach)
 
 Team Team::operator+(int points) const
 {
-	return Team(name, manager, *coaches, *lineup, *benchPlayers, this->points + points);
+	return Team(name, manager, coaches, lineup, benchPlayers, this->points + points);
 }
 
 bool Team::operator>=(const Team& otherTeam) const
@@ -179,11 +188,10 @@ char* Team::getName() const
 
 void Team::scoreGoal()
 {
-	cout << name << "Scored a goal!" << endl;
+	cout << name << " Scored a goal!" << endl;
 	srand(time(NULL));
-	int random = rand() % 5;
+	int random = rand() % LINEUP_SIZE;
 	++(this->getLineup()[random]);    //add a goal to a player from team
-	
 }
 
 Player** Team::getLineup()
