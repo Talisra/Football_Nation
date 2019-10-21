@@ -24,7 +24,7 @@ void Referee::setGamesPlayed(int games)
 
 void Referee::setRating()
 {
-	if (getGamesPlayed() >= arr[4]) 
+	if (getGamesPlayed() >= arr[MAX_RATING_POSITION])
 	{
 		this->rating = 5;
 		return;

@@ -3,6 +3,8 @@
 
 #include "person.h"
 
+const int MAX_RATING_POSITION = 4;
+
 class Referee : public Person
 {
 private:
