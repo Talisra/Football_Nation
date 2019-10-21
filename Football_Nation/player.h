@@ -12,7 +12,7 @@ const int DEFENDER_BONUS = 3;
 
 class Player : virtual public Person
 {
-
+	friend Team;
 public:
 	
 	void show() const; //TODO: IMPLEMENT THE FUNCTION
@@ -44,7 +44,6 @@ public:
 	void setGoalkeeping(int goalkeeping);
 	void setValue(int val);
 	void setRole(Role role);
-	void setTeam(Team* team);
 
 protected:
 	int attack;
@@ -54,7 +53,7 @@ protected:
 	int value;
 	Role role;
 	Team* currentTeam;
-
+	void setTeam(Team* team); // changing the team is only available through Team
 	Player(const Player& other);
 
 };

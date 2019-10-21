@@ -22,11 +22,13 @@ int main()
 	Player messi("Messi", 32, "Spain", 40, 30, 10, 0, 10000, (Role)0, nullptr);
 	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0, nullptr);
 	Coach z("Zidan", 40, "French", (Role)2, nullptr);
+	Manager a("Arcadi", 60, "Russian", 10);
+	//Team t1("Hapoel", )
 	++messi;
 	cout << messi;
 	cout << ronaldo;
 	cout << z;
-	cout << (messi >= ronaldo);
+	cout << a;
 
 
 //	ifstream inputFile("League.txt");
