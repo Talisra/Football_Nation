@@ -11,13 +11,14 @@ Person::Person(const char* name, int age, const char* nationality)
 
 const Person& Person::operator=(const Person& other)
 {
-	*this = other;
+	setName(other.name);
+	setAge(other.age);
+	setNationality(other.nationality);
 }
 
-Person::Person(const Person& other):
-	name(other.name), age(other.age), nationality(other.nationality)
+Person::Person(const Person& other)
 {
-
+	*this = other;
 }
 
 Person::~Person()

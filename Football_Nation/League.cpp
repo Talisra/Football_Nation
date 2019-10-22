@@ -74,8 +74,9 @@ void League::rotate()						//rotates the teams clockwise, team 0 remains
 
 const Fixture& League::playFixture()
 {
-	if (isEnded())
-		return;
+	/*if (isEnded())
+		return nullptr;
+		TODO : handle in main? */
 
 	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
 	
