@@ -2,7 +2,7 @@
 #include <time.h>
 
 League::League(const char* name, int numberOfTeams, Team** teams, int numberofreferees, Referee** referees) : numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees),
-referees(referees), fixtures(nullptr)
+referees(referees), fixtures(nullptr), rotationTeams(nullptr)
 {
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
