@@ -6,7 +6,7 @@ class Fixture
 {
 
 private:
-
+	bool hasPlayed;
 	int gamesInFixture;
 	int number;
 	Match** matches;
