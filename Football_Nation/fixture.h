@@ -15,6 +15,11 @@ public:
 	Fixture(int gamesInFixture, int number, Match** matches);
 //	~Fixture();
 //	Fixture(const Fixture& other);
+
+	int getGamesInFixture() const;
+	int getFixtureNumber() const;
+	Match** getMatchesInFixture();
+
 	
 
 	friend ostream& operator<<(ostream& os,const Fixture& fixture);

@@ -9,6 +9,7 @@ class Team;
 
 const int STRIKER_BONUS = 6;
 const int DEFENDER_BONUS = 3;
+const int MID_BONUS = 2;
 
 class Player : virtual public Person
 {

@@ -35,17 +35,41 @@ void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam)
 	for (int i = 0; i < LINEUP_SIZE; i++) 
 	{
 		Player* attPlayer = attackingTeam->getLineup()[i];
-		attackingScore += attPlayer->getAttack() + (attPlayer->getRole() == (Role) 0 ? STRIKER_BONUS : 0);                 //player is a striker
+
+		switch (attPlayer->getRole()) 
+		{
+			case (Role) 0:
+				attackingScore += attPlayer->getAttack() + STRIKER_BONUS;                 //Player is a striker
+				break;
+			case (Role) 3:
+				attackingScore += attPlayer->getAttack() + MID_BONUS;                     //Player is a midfielder
+				break;
+			default:
+				attackingScore += attPlayer->getAttack();
+		}
 
 		Player* defPlayer = defendingTeam->getLineup()[i];
-		defendingScore += defPlayer->getDefence() + (defPlayer->getRole() == (Role) 1 ? DEFENDER_BONUS : 0);               //player is a defender
-		goalKeepingScore += (defPlayer->getRole() == (Role) 2 ? defPlayer->getDefence() + defPlayer->getGoalkeeping() : 0);  //player is a goalkepper	
+
+		switch (defPlayer->getRole())
+		{
+		case (Role) 1:
+			defendingScore += defPlayer->getDefence() + DEFENDER_BONUS;                 //Player is a defender
+			break;
+		case (Role) 2:
+			goalKeepingScore += defPlayer->getDefence() + defPlayer->getGoalkeeping(); //Player is a goalkepper
+			break;
+		case (Role) 3:
+			defendingScore += defPlayer->getDefence() + MID_BONUS;                     //Player is a midfielder
+			break;
+		default:
+			defendingScore += defPlayer->getDefence();
+		}
 	}
 
 	for (int i = 0; i < ATTACK_ROUNDS; i++)
 	{
 		srand(time(NULL));
-		int	random = rand() % 22 + 2;
+		int	random = rand() % 20;
 		if (attackingScore + random > defendingScore + goalKeepingScore) 
 		{
 			attackingTeam->scoreGoal();
