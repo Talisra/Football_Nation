@@ -36,6 +36,16 @@ League::~League()
 	}
 }
 
+int League::getNumberOfTeams() const
+{
+	return numberOfTeams;
+}
+
+Team** League::getTeams() const
+{
+	return teams;
+}
+
 void League::startSeason()
 {
 	Fixture** createdFixtures = new Fixture*[numberOfFixtures];
@@ -47,10 +57,8 @@ void League::startSeason()
 
 		for (int matchNum = 0; matchNum < numberOfTeams/2; matchNum++)
 		{
-			Team* team1 = this->teams[matchNum];
-			Team* team2 = this->teams[numberOfTeams - 1 - matchNum];
-
-			rotate();
+			Team* team1 = this->rotationTeams[matchNum];
+			Team* team2 = this->rotationTeams[numberOfTeams - 1 - matchNum];
 
 			srand(time(NULL));
 			int	random = numberOfReferees==1? 0 : (rand() % (numberOfReferees -1)) ;
@@ -61,13 +69,13 @@ void League::startSeason()
 
 			matchesInFixture[matchNum] = match;
 		}
-
+		rotate();
 		createdFixtures[i] = new Fixture(numberOfTeams / 2, i+1, matchesInFixture);
 	}
 	this->fixtures = createdFixtures;
 }
 
-void League::rotate()						//rotates the teams clockwise, team 0 remains
+void League::rotate()//rotates the teams clockwise, team 0 remains
 {
 	Team* tempTeam = rotationTeams[0];
 	rotationTeams[0] = rotationTeams[numberOfTeams - 1];
@@ -75,7 +83,7 @@ void League::rotate()						//rotates the teams clockwise, team 0 remains
 
 	//need to switch 0 and last team position
 
-	Team* last = rotationTeams[numberOfTeams - 1]; 
+	Team* last = rotationTeams[numberOfTeams - 1];
 
 	for (int i = numberOfTeams -1; i > 0 ; i--)
 	{
@@ -91,12 +99,14 @@ const Fixture& League::playFixture()
 		TODO : handle in main? */
 
 	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
+
 	
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
 	{
 		fixtureToPlay->getMatchesInFixture()[i]->playMatch();
 	}
-	
+	fixtureToPlay->setHasPlayed(true);
+	sortTeams();
 	return *fixtureToPlay;
 }
 
@@ -132,7 +142,9 @@ void League::addTeam(Team* team)
 {
 	if (teamIndex >= numberOfTeams)
 		return;
-	teams[teamIndex++] = team;
+	teams[teamIndex] = team;
+	rotationTeams[teamIndex] = team;
+	teamIndex++;
 }
 
 void League::showMostActiveReferee() const
@@ -179,13 +191,32 @@ void League::showLeadingScorer() const
 	cout << &goalLeader << endl;
 }
 
+void League::sortTeams()
+{
+	int i, j;
+	for (i = 0; i < numberOfTeams - 1; i++)
+	{
+		for (j = 0; j < numberOfTeams - i - 1; j++)
+		{
+			if (teams[j] >= teams[j + 1])
+			{
+				std::swap(teams[j], teams[j+1]);
+			}
+		}
+	}
+}
+
 
 ostream& operator<<(ostream& os, const League& league)
 {
-	os << "League Name: " << league.name << ", Teams: " << league.numberOfTeams << ", Fixtures: " << league.numberOfFixtures << ".\n";
-	for (int i = 0; i < league.numberOfFixtures; i++)
+	os << "=================================================\n" << "League Name: " << league.name
+		<< ", Teams: " << league.numberOfTeams << ", Fixtures: " << league.numberOfFixtures << ".\n==================================================\n";
+	for (int i = 0; i < league.numberOfTeams; i++)
 	{
-		os << *league.fixtures[i];
+		os << league.teams[i]->getName() << ": " << league.teams[i]->getPoints() << " Points";
+		if (i == 0)
+			os << "\t<< Winner! >>";
+		os << endl;
 	}
 	return os;
 }

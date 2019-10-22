@@ -25,7 +25,6 @@ private:
 	int numberOfFixtures;
 	int playedFixtures;
 	Fixture** fixtures;
-
 public:
 	League(const char* name, int numberOfTeams,
 		Team** teams = nullptr, int numberofreferees = 0,
@@ -43,6 +42,9 @@ public:
 	void showMostActiveReferee() const;
 	bool isEnded();
 	void rotate();
+	int getNumberOfTeams() const;
+	Team** getTeams() const;
+	void sortTeams(); //sort the teams by points (std::sort)
 	friend ostream& operator<<(ostream& os, const League& league);
 };
 #endif // !__LEAGUE_H

@@ -21,11 +21,17 @@ Match** Fixture::getMatchesInFixture()
 	return matches;
 }
 
+void Fixture::setHasPlayed(bool value)
+{
+	this->hasPlayed = value;
+}
+
 ostream& operator<<(ostream& os, const Fixture& fixture)
 {
 	os << "Fixture #" << fixture.number << endl;
 	for (int i = 0; i < fixture.gamesInFixture; i++)
 	{
+		os << *fixture.matches[i];
 		if (fixture.hasPlayed == true) 
 		{
 			Match* match = fixture.matches[i];

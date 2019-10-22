@@ -259,7 +259,6 @@ int Team::getLineupSize() const
 
 void Team::scoreGoal()
 {
-	cout << name << " Scored a goal!" << endl;
 	srand(time(NULL));
 	int random = rand() % LINEUP_SIZE;
 	++(this->getLineup()[random]);    //add a goal to a player from team
@@ -283,9 +282,14 @@ Player* Team::getGoalLeader() const
 	return goalLeader;
 }
 
-Player** Team::getLineup()
+Player** Team::getLineup() const
 {
 	return lineup;
+}
+
+Player** Team::getBench() const
+{
+	return benchPlayers;
 }
 
 //below functions are for use inside this class only! (they are private)

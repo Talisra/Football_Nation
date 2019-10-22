@@ -69,7 +69,8 @@ void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam)
 	for (int i = 0; i < ATTACK_ROUNDS; i++)
 	{
 		srand(time(NULL));
-		int	random = rand() % 20;   //add final
+		int	random = rand() % 200;   //add final
+		//cout << random << " <<----------------------------------------------------------\n";
 		if (attackingScore + random > defendingScore + goalKeepingScore) 
 		{
 			attackingTeam->scoreGoal();
@@ -108,6 +109,6 @@ int Match::getResult(int index) const
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	os << "|| Home Team: " << match.getHomeTeam()->getName() << " VS " << "Away Team: " << " " << match.getAwayTeam()->getName() << endl;
+	os << match.getHomeTeam()->getName() << " VS " <<  match.getAwayTeam()->getName();
 	return os;
 }

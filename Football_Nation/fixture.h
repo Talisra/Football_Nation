@@ -10,12 +10,11 @@ private:
 	int gamesInFixture;
 	int number;
 	Match** matches;
-
 public:
 	Fixture(int gamesInFixture, int number, Match** matches);
 //	~Fixture();
 //	Fixture(const Fixture& other);
-
+	void setHasPlayed(bool value);
 	int getGamesInFixture() const;
 	int getFixtureNumber() const;
 	Match** getMatchesInFixture();

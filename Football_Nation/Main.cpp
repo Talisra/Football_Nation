@@ -87,6 +87,15 @@ int main()
 	*/
 	ifstream inputFile("League.txt");
 	League* league = readLeague(inputFile);
+	for (int i = 0; i < league->getNumberOfTeams(); i++)
+	{
+		for (int j = 0; j < LINEUP_SIZE; j++)
+		{
+			Player* p = league->getTeams()[i]->getBench()[j];
+			league->getTeams()[i]->addToLineup(p);
+		}
+		//cout << *league->getTeams()[i];
+	}
 	/*
 	 *start season (create season fixtures)
 	 *create matches and assign referees for each match
@@ -104,10 +113,11 @@ int main()
 		Fixture fixture = league->playFixture();
 		cout << fixture;
 	} while (!league->isEnded());
-
+	
 	//end season
-	/*show League Table*/
-	cout << league << endl;
+	//show League Table
+	cout << *league << endl;
+	/*
 	//show leading team(team)
 	league->showLeadingTeam();
 	//show the loosing team(team)
@@ -115,7 +125,8 @@ int main()
 	//show the leading scorer(player)
 	league->showLeadingScorer();
 	//show the ref that played the most matches
-	//league->showMostActiveReferee();
+	league->showMostActiveReferee();
+	*/
 	inputFile.close();
 	system("pause");
 	return 0;

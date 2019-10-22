@@ -40,7 +40,8 @@ public:
 	void removeCoach(Coach* coach);
 	void addToLineup(Player* player); //this will add player from the bench to the lineup. (will remove the other player from the bench).
 	void removeFromLineup(Player* player); //this will remove the player from the lineup to the bench. NOTE: this function will not return a feedback if the index is already a nullptr
-	Player** getLineup(); //returns the array of lineup
+	Player** getLineup() const; //returns the array of lineup
+	Player** getBench() const;
 	Team operator+(int points) const; // add points to the team
 	bool operator>=(const Team& otherTeam) const; //Team is bigger if team have more point
 	friend ostream& operator<<(ostream& os, const Team& team);
