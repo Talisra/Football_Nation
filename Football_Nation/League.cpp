@@ -1,4 +1,5 @@
 #include "league.h"
+#include <time.h>
 
 League::League(const char* name, int numberOfTeams, Team** teams, int numberofreferees, Referee** referees) : numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees),
 referees(referees), fixtures(nullptr)
@@ -16,19 +17,33 @@ League::~League()
 
 void League::startSeason()
 {
+	Fixture** createdFixtures;
+
 	for (int i = 0; i < numberOfFixtures; i++)    // i = overall fixtures to create
 	{
+		
+		Match** matchesInFixture;
+
 		for (int matchNum = 0; matchNum < numberOfTeams/2; matchNum++)
 		{
-			Team* team1 = matchNum == 0 ? this->teams[0] : this->teams[(numberOfTeams - i + matchNum) % numberOfTeams];
-			Team* team2 = this->teams[(numberOfTeams -1 -i- matchNum)%numberOfTeams];
-			//TODO: fix algo....
+			Team* team1 = this->teams[matchNum];
+			Team* team2 = this->teams[numberOfTeams - 1 - matchNum];
 
-			
+			//rotate();
 
+			srand(time(NULL));
+			int	random = rand() % numberOfReferees;
+			Referee* ref = this->referees[random];
+			Match* match;
+
+			i < numberOfFixtures / 2 ? match = new Match(team1, team2, ref) : match = new Match(team2, team1, ref);   //set home/away teams based on fixture number
+
+			matchesInFixture[i] = match;
 		}
 
+		createdFixtures[i] = new Fixture(numberOfTeams / 2, i+1, matchesInFixture);
 	}
+	this->fixtures = createdFixtures;
 }
 
 bool League::playFixture()

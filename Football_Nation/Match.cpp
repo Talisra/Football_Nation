@@ -69,7 +69,7 @@ void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam)
 	for (int i = 0; i < ATTACK_ROUNDS; i++)
 	{
 		srand(time(NULL));
-		int	random = rand() % 20;
+		int	random = rand() % 20;   //add final
 		if (attackingScore + random > defendingScore + goalKeepingScore) 
 		{
 			attackingTeam->scoreGoal();
