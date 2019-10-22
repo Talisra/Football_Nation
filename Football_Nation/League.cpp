@@ -2,13 +2,13 @@
 #include <time.h>
 
 League::League(const char* name, int numberOfTeams, Team** teams, int numberofreferees, Referee** referees) : numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees),
-referees(referees), fixtures(nullptr), rotationTeams(nullptr)
+referees(referees), fixtures(nullptr)
 {
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 	playedFixtures = 0;
 	numberOfFixtures = (numberOfTeams - 1) * 2;
-	Team** rotationTeams = new Team*[numberOfTeams]; // makes a copy for rotations
+	rotationTeams = new Team*[numberOfTeams]; // makes a copy for rotations
 	for (int i = 0; i < numberOfTeams; i++)
 		rotationTeams[i] = teams[i];
 }
@@ -41,7 +41,7 @@ void League::startSeason()
 			rotate();
 
 			srand(time(NULL));
-			int	random = rand() % (numberOfReferees -1) ;
+			int	random = numberOfReferees==1? 0 : (rand() % (numberOfReferees -1)) ;
 			Referee* ref = this->referees[random];
 			Match* match;
 
@@ -168,6 +168,17 @@ void League::showLeadingScorer() const
 		this->teams[i]->getGoalLeader() >= goalLeader ? goalLeader = teams[i]->getGoalLeader() : 0 ;
 	}
 	cout << &goalLeader << endl;
+}
+
+
+ostream& operator<<(ostream& os, const League& league)
+{
+	os << "League Name: " << league.name << ", Teams: " << league.numberOfTeams << ", Fixtures: " << league.numberOfFixtures << ".\n";
+	for (int i = 0; i < league.numberOfFixtures; i++)
+	{
+		os << *league.fixtures[i];
+	}
+	return os;
 }
 
 bool League::isEnded()

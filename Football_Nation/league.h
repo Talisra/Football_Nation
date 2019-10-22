@@ -40,9 +40,9 @@ public:
 	void showLosingTeam() const;
 	void showLeadingScorer() const;
 	void showMostActiveReferee() const;
-	void show() const;
 	bool isEnded();
 	void rotate();
+	friend ostream& operator<<(ostream& os, const League& league);
 };
 #endif // !__LEAGUE_H
 
