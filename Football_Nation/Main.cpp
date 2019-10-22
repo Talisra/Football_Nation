@@ -221,7 +221,7 @@ Manager* readManager(ifstream& inputFile)
 
 Referee* readReferee(ifstream& inputFile)
 {
-	char* name, *nationality;
+	char name[NAME_SIZE], nationality[NAME_SIZE];
 	int age, rating;
 
 	/*Get referee attributes*/
