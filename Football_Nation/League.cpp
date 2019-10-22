@@ -8,12 +8,20 @@ referees(referees), fixtures(nullptr)
 	strcpy(this->name, name);
 	playedFixtures = 0;
 	numberOfFixtures = (numberOfTeams - 1) * 2;
-	//rotationTeams = new Team**(teams);        //TODO initiate like it should be 
+	Team** rotationTeams = new Team*[numberOfTeams]; // makes a copy for rotations
+	for (int i = 0; i < numberOfTeams; i++)
+		rotationTeams[i] = teams[i];
 }
 
 League::~League()
 {
-
+	delete[] rotationTeams;
+	if (fixtures != nullptr)
+		for (int i = 0; i < numberOfFixtures; i++)
+		{
+			delete[] fixtures[i]->getMatchesInFixture();
+		}
+		delete[] fixtures;
 }
 
 void League::startSeason()
