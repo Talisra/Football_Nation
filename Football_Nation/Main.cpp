@@ -11,14 +11,14 @@ using namespace std;
 #include "fixture.h"
 #include "coach_player.h"
 
-/*
+
 League * readLeague(ifstream& inputFile);
 Team * readTeam(ifstream& inputFile);
 Player * readPlayer(ifstream& inputFile);
 Coach * readCoach(ifstream& inputFile);
 Manager * readManager(ifstream& inputFile);
 Referee * readReferee(ifstream& inputFile);
-*/
+
 int main()
 {
 	/*
