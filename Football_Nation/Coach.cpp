@@ -1,6 +1,6 @@
 #include "coach.h"
 
-const char* refRoles[] = { "Striker", "Defender", "GoalKepper", "Midfielder" };
+const char* roles[] = { "Striker", "Defender", "GoalKepper", "Midfielder" };
 
 Coach::Coach(const char* name, int age, const char* nationality, Role type, Team * currentTeam) :
 	Person(name, age, nationality)
@@ -23,7 +23,7 @@ ostream& operator<<(ostream& os, const Coach& c)
 		teamName = "None";
 	else
 		teamName = c.getCurrentTeam()->getName();
-	os << "Name: " << c.name << "," << "\tAge: " << c.age << ", Nationality: " << c.nationality << "\t\tRole: " << refRoles[(int)c.getType()] 
+	os << "Name: " << c.name << "," << "\tAge: " << c.age << ", Nationality: " << c.nationality << "\t\tRole: " << roles[(int)c.getType()] 
 		<< ", Team: " << teamName << endl;
 	return os;
 }

@@ -6,7 +6,9 @@ CoachPlayer::CoachPlayer(const char* name, int age, const char* nationality, con
 
 }
 
-void CoachPlayer::show() const
+ostream& operator<<(ostream& os, const CoachPlayer& cp)
 {
+	//os << cp << endl;
+	return os;
 }
 
