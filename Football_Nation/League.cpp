@@ -9,19 +9,31 @@ referees(referees), fixtures(nullptr)
 	playedFixtures = 0;
 	numberOfFixtures = (numberOfTeams - 1) * 2;
 	rotationTeams = new Team*[numberOfTeams]; // makes a copy for rotations
-	for (int i = 0; i < numberOfTeams; i++)
-		rotationTeams[i] = teams[i];
+	if (this->teams != nullptr)
+	{
+		teamIndex = numberOfTeams;
+		for (int i = 0; i < numberOfTeams; i++)
+			rotationTeams[i] = this->teams[i];
+	}
+	else
+	{
+		this->teams = new Team*[numberOfTeams];
+		teamIndex = 0;
+	}
 }
 
 League::~League()
 {
+	delete[] teams;
 	delete[] rotationTeams;
 	if (fixtures != nullptr)
+	{
 		for (int i = 0; i < numberOfFixtures; i++)
 		{
 			delete[] fixtures[i]->getMatchesInFixture();
 		}
 		delete[] fixtures;
+	}
 }
 
 void League::startSeason()
@@ -118,13 +130,9 @@ void League::addReferee(Referee* referee)
 
 void League::addTeam(Team* team)
 {
-	Team** tempTeam = new Team*[++numberOfTeams];
-	for (int i = 0; i < numberOfTeams - 1; i++)
-	{
-		tempTeam[i] = teams[i];
-	}
-	delete[] teams;
-	teams = tempTeam;
+	if (teamIndex >= numberOfTeams)
+		return;
+	teams[teamIndex++] = team;
 }
 
 void League::showMostActiveReferee() const

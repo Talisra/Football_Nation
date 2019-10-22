@@ -26,8 +26,7 @@ ostream& operator<<(ostream& os, const Fixture& fixture)
 	os << "Fixture #" << fixture.number << endl;
 	for (int i = 0; i < fixture.gamesInFixture; i++)
 	{
-		os << *fixture.matches[i];
-		if (fixture.hasPlayed) 
+		if (fixture.hasPlayed == true) 
 		{
 			Match* match = fixture.matches[i];
 			os << " || result:  " << match->getResult(0) << ":" << match->getResult(1)<< endl;
