@@ -68,8 +68,8 @@ int main()
 	t2.addToLineup(&ooo2);
 	t2.addToLineup(&ooo3);
 
-	t2.removeFromLineup(&mich);
-	t2.addToLineup(&mich);
+	t2.removeFromLineup(&ooo1);
+	//t2.addToLineup(&mich);
 
 	cout << t1 <<endl;
 	cout << t2 << "\n\n---------------------------------" << endl;

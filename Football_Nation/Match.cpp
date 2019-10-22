@@ -108,6 +108,6 @@ int Match::getResult(int index) const
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	os << "Home Team: " << match.getHomeTeam()->getName() << " VS " << "Away Team: " << " " << match.getAwayTeam()->getName() << ", result is: " << match.getResult(0) << ":" << match.getResult(1) << endl;
+	os << "|| Home Team: " << match.getHomeTeam()->getName() << " VS " << "Away Team: " << " " << match.getAwayTeam()->getName() << "|| result:  " << match.getResult(0) << ":" << match.getResult(1) << endl;
 	return os;
 }
