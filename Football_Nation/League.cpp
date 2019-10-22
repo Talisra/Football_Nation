@@ -72,19 +72,19 @@ void League::rotate()						//rotates the teams clockwise, team 0 remains
 	rotationTeams[0] = last;
 }
 
-bool League::playFixture()
+const Fixture& League::playFixture()
 {
 	if (isEnded())
-		return false;
+		return;
+
 	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
 	
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
 	{
 		fixtureToPlay->getMatchesInFixture()[i]->playMatch();
 	}
-	cout << fixtureToPlay << endl; //Should remove?
-	//delete[] fixtureToPlay //ehhh...not sure about this one
-	return true;
+	
+	return *fixtureToPlay;
 }
 
 
