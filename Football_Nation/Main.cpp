@@ -116,6 +116,7 @@ int main()
 	
 	//end season
 	//show League Table
+	//league->sortTeams();
 	cout << *league << endl;
 	/*
 	//show leading team(team)

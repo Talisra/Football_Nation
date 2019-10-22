@@ -333,11 +333,3 @@ void Team::alignBench(int starting_index)
 	}
 	benchPlayers[currentBenchSize] = nullptr;
 }
-
-bool Team::operator>=(const Team& other) const
-{
-	if (this->points >= other.points)
-		return true;
-	else
-		return false;
-}

@@ -198,9 +198,11 @@ void League::sortTeams()
 	{
 		for (j = 0; j < numberOfTeams - i - 1; j++)
 		{
-			if (teams[j] >= teams[j + 1])
+			if (*teams[j+1] >= *teams[j]) //NOTE: checking is opposite because the table points is top down.
 			{
-				std::swap(teams[j], teams[j+1]);
+				Team* temp = teams[j];
+				teams[j] = teams[j + 1];
+				teams[j + 1] = temp;
 			}
 		}
 	}
@@ -209,8 +211,8 @@ void League::sortTeams()
 
 ostream& operator<<(ostream& os, const League& league)
 {
-	os << "=================================================\n" << "League Name: " << league.name
-		<< ", Teams: " << league.numberOfTeams << ", Fixtures: " << league.numberOfFixtures << ".\n==================================================\n";
+	os << "=======================================================\n" << "League Name: " << league.name
+		<< ", Teams: " << league.numberOfTeams << ", Fixtures: " << league.numberOfFixtures << ".\n=======================================================\n";
 	for (int i = 0; i < league.numberOfTeams; i++)
 	{
 		os << league.teams[i]->getName() << ": " << league.teams[i]->getPoints() << " Points";
