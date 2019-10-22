@@ -8,6 +8,7 @@ referees(referees), fixtures(nullptr)
 	strcpy(this->name, name);
 	playedFixtures = 0;
 	numberOfFixtures = (numberOfTeams - 1) * 2;
+	//rotationTeams = new Team**(teams);        //TODO initiate like it should be 
 }
 
 League::~League()
@@ -44,6 +45,16 @@ void League::startSeason()
 		createdFixtures[i] = new Fixture(numberOfTeams / 2, i+1, matchesInFixture);
 	}
 	this->fixtures = createdFixtures;
+}
+
+void League::rotate()						//rotates the teams clockwise, team 0 remains
+{
+	Team* tempTeam = rotationTeams[numberOfTeams-1];
+	for (int i = 1; i < numberOfTeams - 1; i++)
+	{
+		rotationTeams[i + 1] = rotationTeams[i];
+	}
+	rotationTeams[1] = tempTeam;
 }
 
 bool League::playFixture()

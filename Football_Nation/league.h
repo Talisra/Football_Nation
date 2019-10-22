@@ -19,6 +19,7 @@ private:
 	int numberOfTeams;
 	int numberOfReferees;
 	Team** teams;
+	Team** rotationTeams;         //to rotate while keeping the original team order in teams
 	Referee** referees;
 	int numberOfFixtures;
 	int playedFixtures;
@@ -41,6 +42,7 @@ public:
 	void showMostActiveReferee() const;
 	void show() const;
 	bool isEnded();
+	void rotate();
 };
 #endif // !__LEAGUE_H
 
