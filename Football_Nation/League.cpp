@@ -31,10 +31,18 @@ void League::startSeason()
 	}
 }
 
-const Fixture& League::playFixture()
+bool League::playFixture()
 {
-	// TODO
-	return *this->fixtures[0]; // ---------> IMPORTANT <-----------  only for the code to compile
+	if (isEnded())
+		return false;
+	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
+	
+	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
+	{
+		fixtureToPlay->getMatchesInFixture()[i]->playMatch();
+	}
+	//delete[] fixtureToPlay //ehhh...not sure about this one
+	return true;
 }
 
 
@@ -78,8 +86,6 @@ void League::addTeam(Team* team)
 
 void League::showMostActiveReferee() const
 {
-
-	//TODO : add possible tie?
 	Referee* activeRef = referees[0];
 
 	for (int i = 1; i < numberOfReferees; i++)
@@ -91,7 +97,6 @@ void League::showMostActiveReferee() const
 
 void League::showLeadingTeam() const
 {
-	//TODO : add possible tie?
 	Team* leadingTeam = teams[0];
 
 	for (int i = 1; i < numberOfTeams; i++)
@@ -103,7 +108,6 @@ void League::showLeadingTeam() const
 
 void League::showLosingTeam() const
 {
-	//TODO tie?
 	Team* losingTeam = teams[0];
 
 	for (int i = 1; i < numberOfTeams; i++)

@@ -34,7 +34,7 @@ public:
 	void setNumberOfReferees(int numberOfreferees); //changes the number of referees in the league. any leftover referees will be eliminated from the league.
 	void addReferee(Referee* referee); //add a referee only if there is a room in the array.
 	void startSeason();
-	const Fixture& playFixture();
+	bool playFixture();
 	void showLeadingTeam() const;
 	void showLosingTeam() const;
 	void showLeadingScorer() const;
