@@ -9,7 +9,18 @@ Person::Person(const char* name, int age, const char* nationality)
 	setNationality(nationality);
 }
 
-Person::~Person() 
+const Person& Person::operator=(const Person& other)
+{
+	*this = other;
+}
+
+Person::Person(const Person& other):
+	name(other.name), age(other.age), nationality(other.nationality)
+{
+
+}
+
+Person::~Person()
 {
 	delete []name;
 	delete []nationality;

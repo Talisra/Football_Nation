@@ -9,12 +9,15 @@ protected:
 	char* name;//[NAME_SIZE];
 	int age;
 	char* nationality; //[NAME_SIZE] ;
-	//Person(const Person& other) = delete;
+	Person(const Person& other);
 	virtual ~Person();
+	const Person& operator=(const Person& other);
 
 public:
 	Person(const char* name, int age, const char* nationality);
-	//virtual const Person& operator=(const Person& other) = 0;
+
+	//virtual char* defineRoles() = 0;
+	//TODO think about this?
 
 	char* getName() const;
 	int getAge() const;
