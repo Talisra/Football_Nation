@@ -18,6 +18,7 @@ private:
 	char* name;
 	int numberOfTeams;
 	int numberOfReferees;
+	int teamIndex;
 	Team** teams;
 	Team** rotationTeams;         //to rotate while keeping the original team order in teams
 	Referee** referees;
