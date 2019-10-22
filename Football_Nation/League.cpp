@@ -18,10 +18,10 @@ void League::startSeason()
 {
 	for (int i = 0; i < numberOfFixtures; i++)    // i = overall fixtures to create
 	{
-		for (int j = 0; j < numberOfTeams/2; j++) 
+		for (int matchNum = 0; matchNum < numberOfTeams/2; matchNum++)
 		{
-			Team* team1 = this->teams[(numberOfTeams -i +j)%numberOfTeams];
-			Team* team2 = this->teams[(numberOfTeams -1 -i-j)%numberOfTeams];
+			Team* team1 = matchNum == 0 ? this->teams[0] : this->teams[(numberOfTeams - i + matchNum) % numberOfTeams];
+			Team* team2 = this->teams[(numberOfTeams -1 -i- matchNum)%numberOfTeams];
 			//TODO: fix algo....
 
 			
@@ -41,6 +41,7 @@ bool League::playFixture()
 	{
 		fixtureToPlay->getMatchesInFixture()[i]->playMatch();
 	}
+	cout << fixtureToPlay << endl; //Should remove?
 	//delete[] fixtureToPlay //ehhh...not sure about this one
 	return true;
 }
