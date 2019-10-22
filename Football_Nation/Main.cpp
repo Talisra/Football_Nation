@@ -47,7 +47,7 @@ int main()
 	t1.addToLineup(&zlatan);
 	t1.addToLineup(&m);
 
-	Player mich("Michael Jordan", 50, "USA", 10, 10, 50, 0, 7000, (Role)3);
+	Player mich("Michael Jordan", 50, "USA", 10, 10, 50, 0, 7000, Role::Striker);
 	Player zehavi("Zehavi", 30, "Israeli", 50, 30, 20, 0, 4000, (Role)2);
 	Player ooo1("Who", 30, "As", 40, 40, 40, 0, 4000, (Role)3);
 	Player ooo2("Who2", 30, "As", 40, 40, 40, 0, 4000, (Role)3);
@@ -68,16 +68,21 @@ int main()
 	t2.addToLineup(&ooo2);
 	t2.addToLineup(&ooo3);
 
-	t2.removeFromLineup(&ooo1);
-	//t2.addToLineup(&mich);
-
 	cout << t1 <<endl;
 	cout << t2 << "\n\n---------------------------------" << endl;
-	Match match(&t2, &t1, &ref);
-	cout << match << endl;
-	match.playMatch();
-	cout << match << endl;
 
+	Team** teams  = new Team*[2];
+	teams[0] = &t1;
+	teams[1] = &t2;
+
+	Referee** refs = new Referee * [1];
+	refs[0] = &ref;
+
+	League lig("League of Legends", 2, teams, 1, refs);
+
+	lig.startSeason();
+
+	delete[] teams;
 //	ifstream inputFile("League.txt");
 //	League * league = readLeague(inputFile);
 	/*

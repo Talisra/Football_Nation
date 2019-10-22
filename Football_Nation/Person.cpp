@@ -9,8 +9,6 @@ Person::Person(const char* name, int age, const char* nationality)
 	setNationality(nationality);
 }
 
-Person::
-
 Person::~Person() 
 {
 	delete []name;
