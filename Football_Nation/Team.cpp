@@ -9,8 +9,8 @@ Team::Team(const char* name, Manager* manager)
 	this->name = new char[sizeof(name) + 1];
 	strcpy(this->name, name);
 	this->setManager(manager);
-	this->coaches = new Coach*[INITIAL_COACH_SIZE];
-	coachesSize = INITIAL_COACH_SIZE;
+	this->coaches = new Coach*[COACH_SIZE];
+	coachesSize = COACH_SIZE;
 	for (int i = 0; i < coachesSize; i++)
 	{
 		coaches[i] = nullptr;
@@ -20,9 +20,10 @@ Team::Team(const char* name, Manager* manager)
 	{
 		lineup[i] = nullptr;
 	}
-	this->benchPlayers = new Player*[INITIAL_BENCH_SIZE];
-	benchSize = INITIAL_BENCH_SIZE;
-	for (int i = 0; i < benchSize; i++)
+	this->benchPlayers = new Player*[BENCH_SIZE];
+	currentBenchSize = 0;
+	
+	for (int i = 0; i < BENCH_SIZE; i++)
 	{
 		benchPlayers[i] = nullptr;
 	}
@@ -38,7 +39,7 @@ Team::Team(const char* name, Manager* manager, Coach** coaches, Player** lineup,
 	this->coaches = coaches;
 	this->lineup = lineup;
 	this->benchPlayers = benchPlayers;
-	benchSize = 0;
+	currentBenchSize = 0;
 	coachesSize = 0;
 	currentLineup = 0;
 	this->points = points;
@@ -54,20 +55,27 @@ Team::~Team()
 
 void Team::addPlayer(Player* player)
 {
-	if (player != nullptr)
+	if (player != nullptr && player->getTeam() == nullptr) // adds a new player only if it is not null & he is not on any other team.
 	{
 		if (!fillBench(player))
 		{
-			Player** tempArray = new Player * [benchSize * 2];
+			/* ---> old code <---
+			cout << "array of bench is full so we need to size it up\n\n\n";
+			int arr_multiplier = benchSize * 2;
+			Player** tempArray = new Player*[arr_multiplier];
 			for (int i = 0; i < benchSize; i++)
 			{
 				tempArray[i] = benchPlayers[i];
 			}
-			tempArray[benchSize] = player;
-			benchSize *= 2;
 			delete[] benchPlayers;
 			benchPlayers = tempArray;
+			tempArray[benchSize] = player;
+			benchSize *= 2;
+			cout << "now bench is size: " << benchSize << endl;
+			*/
+			return; // bench is full
 		}
+		currentBenchSize++;
 		player->setTeam(this);
 	}
 }
@@ -77,21 +85,23 @@ void Team::addToLineup(Player* player)
 {
 	if (player == nullptr)
 		return;
-
 	for (int i = 0; i < currentLineup; i++) //return if the selected player is already in lineup
 	{
 		if (lineup[i] == player)
 			return;
 	}
-
 	if (currentLineup >= LINEUP_SIZE) //return if the lineup is full
 		return;
-	for (int i = 0; i < benchSize; i++)
+
+	for (int i = 0; i < currentBenchSize; i++)
 	{
 		if (benchPlayers[i] == player)
+		{
 			benchPlayers[i] = nullptr;
-		if (i == benchSize)
-			return;
+			alignBench(i);
+			currentBenchSize--;
+		}
+
 	}
 	lineup[currentLineup] = player;
 	currentLineup++;
@@ -111,11 +121,13 @@ void Team::removePlayer(Player* player)
 			currentLineup--;
 		}
 	}
-	for (int i = 0; i < benchSize; i++)
+	for (int i = 0; i < currentBenchSize; i++)
 	{
 		if (benchPlayers[i] == player)
 		{
 			benchPlayers[i] = nullptr;
+			alignBench(i);
+			currentBenchSize--;
 		}
 	}
 	player->setTeam(nullptr);
@@ -124,7 +136,7 @@ void Team::removePlayer(Player* player)
 
 void Team::removeFromLineup(Player* player)
 {
-	if (player == nullptr)
+	if (player == nullptr && currentBenchSize < BENCH_SIZE) // only remove when there is a room in bench
 		return;
 
 	for (int i = 0; i < currentLineup; i++)
@@ -134,9 +146,10 @@ void Team::removeFromLineup(Player* player)
 			lineup[i] = nullptr;
 			alignLineup(i);
 			currentLineup--;
+			addPlayer(player);
+			return;
 		}
 	}
-	addPlayer(player);
 }
 
 
@@ -159,7 +172,8 @@ void Team::addCoach(Coach* coach)
 	coach->setTeam(nullptr);
 	if (!fillCoach(coach))
 	{
-		Coach** tempArray = new Coach*[coachesSize * 2];
+		int arr_multiplier = coachesSize * 2;
+		Coach** tempArray = new Coach*[arr_multiplier];
 		for (int i = 0; i < coachesSize; i++)
 		{
 			tempArray[i] = coaches[i];
@@ -226,10 +240,9 @@ ostream& operator<<(ostream& os, const Team& team)
 		os << *team.lineup[i];
 	}
 	os << "--on bench--" << endl;
-	for (int i = 0; i < team.benchSize; i++)
+	for (int i = 0; i < team.currentBenchSize; i++)
 	{
-		if (team.benchPlayers[i] != nullptr)
-			os << *team.benchPlayers[i];
+		os << *team.benchPlayers[i];
 	}
 	return os;
 }
@@ -264,7 +277,7 @@ Player* Team::getGoalLeader() const
 	for (int i = 1; i < LINEUP_SIZE; i++)
 		lineup[i] >= goalLeader ? goalLeader = lineup[i] : 0;
 
-	for (int i = 0; i < benchSize; i++)
+	for (int i = 0; i < currentBenchSize; i++)
 		benchPlayers[i] >= goalLeader ? goalLeader = benchPlayers[i] : 0;
 
 	return goalLeader;
@@ -278,13 +291,10 @@ Player** Team::getLineup()
 //below functions are for use inside this class only! (they are private)
 bool Team::fillBench(Player* player)
 {
-	for (int i = 0; i < benchSize; i++)
+	if (currentBenchSize < BENCH_SIZE)
 	{
-		if (benchPlayers[i] == nullptr)
-		{
-			benchPlayers[i] = player;
-			return true;
-		}
+		benchPlayers[currentBenchSize] = player;
+		return true;
 	}
 	return false;
 }
@@ -304,9 +314,18 @@ bool Team::fillCoach(Coach* coach)
 
 void Team::alignLineup(int starting_index)
 {
-	for (int i = starting_index; i < LINEUP_SIZE; i++)
+	for (int i = starting_index; i < LINEUP_SIZE-1; i++)
 	{
 		lineup[i] = lineup[i + 1];
 	}
 	lineup[LINEUP_SIZE] = nullptr;
+}
+
+void Team::alignBench(int starting_index)
+{
+	for (int i = starting_index; i < currentBenchSize - 1; i++)
+	{
+		benchPlayers[i] = benchPlayers[i + 1];
+	}
+	benchPlayers[currentBenchSize] = nullptr;
 }
