@@ -103,7 +103,7 @@ int main()
 	{
 		Fixture fixture = league->playFixture();
 		cout << fixture;
-	} while (league->isEnded());
+	} while (!league->isEnded());
 
 	//end season
 	/*show League Table*/
