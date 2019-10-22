@@ -50,6 +50,7 @@ public:
 	void scoreGoal();
 	int getPoints();
 	Player* getGoalLeader() const;
+	bool operator>=(const Team& other) const;
 
 private:
 	bool fillBench(Player* player); //try to fill a player in the bench. returns true if there is a room, and false if the bench is currenty full. an outside function will extend the bench array.
