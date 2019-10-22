@@ -38,7 +38,7 @@ void League::startSeason()
 			Team* team1 = this->teams[matchNum];
 			Team* team2 = this->teams[numberOfTeams - 1 - matchNum];
 
-			//rotate();
+			rotate();
 
 			srand(time(NULL));
 			int	random = rand() % (numberOfReferees -1) ;
@@ -58,12 +58,18 @@ void League::startSeason()
 void League::rotate()						//rotates the teams clockwise, team 0 remains
 {
 	Team* tempTeam = rotationTeams[0];
-	for (int i = 1; i < numberOfTeams - 1; i++)
+	rotationTeams[0] = rotationTeams[numberOfTeams - 1];
+	rotationTeams[numberOfTeams - 1] = tempTeam;
+
+	//need to switch 0 and last team position
+
+	Team* last = rotationTeams[numberOfTeams - 1]; 
+
+	for (int i = numberOfTeams -1; i > 0 ; i--)
 	{
-		Team* tmp = rotationTeams[i + 1];
-		rotationTeams[i + 1] = rotationTeams[i];
+		rotationTeams[i] = rotationTeams[i-1];
 	}
-	rotationTeams[1] = tempTeam;
+	rotationTeams[0] = last;
 }
 
 bool League::playFixture()
