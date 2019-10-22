@@ -14,6 +14,8 @@ const Person& Person::operator=(const Person& other)
 	setName(other.name);
 	setAge(other.age);
 	setNationality(other.nationality);
+
+	return *this;
 }
 
 Person::Person(const Person& other)
