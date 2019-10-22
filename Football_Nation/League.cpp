@@ -18,12 +18,12 @@ League::~League()
 
 void League::startSeason()
 {
-	Fixture** createdFixtures;
+	Fixture** createdFixtures = new Fixture*[numberOfFixtures];
 
 	for (int i = 0; i < numberOfFixtures; i++)    // i = overall fixtures to create
 	{
 		
-		Match** matchesInFixture;
+		Match** matchesInFixture = new Match*[numberOfTeams / 2] ;
 
 		for (int matchNum = 0; matchNum < numberOfTeams/2; matchNum++)
 		{
@@ -33,13 +33,13 @@ void League::startSeason()
 			//rotate();
 
 			srand(time(NULL));
-			int	random = rand() % numberOfReferees;
+			int	random = rand() % (numberOfReferees -1) ;
 			Referee* ref = this->referees[random];
 			Match* match;
 
 			i < numberOfFixtures / 2 ? match = new Match(team1, team2, ref) : match = new Match(team2, team1, ref);   //set home/away teams based on fixture number
 
-			matchesInFixture[i] = match;
+			matchesInFixture[matchNum] = match;
 		}
 
 		createdFixtures[i] = new Fixture(numberOfTeams / 2, i+1, matchesInFixture);
@@ -49,9 +49,10 @@ void League::startSeason()
 
 void League::rotate()						//rotates the teams clockwise, team 0 remains
 {
-	Team* tempTeam = rotationTeams[numberOfTeams-1];
+	Team* tempTeam = rotationTeams[0];
 	for (int i = 1; i < numberOfTeams - 1; i++)
 	{
+		Team* tmp = rotationTeams[i + 1];
 		rotationTeams[i + 1] = rotationTeams[i];
 	}
 	rotationTeams[1] = tempTeam;
