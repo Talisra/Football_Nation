@@ -48,6 +48,9 @@ public:
 	Team** getTeams() const;
 	void sortTeams(); //sort the teams by points (std::sort)
 	friend ostream& operator<<(ostream& os, const League& league);
+
+	int getPlayedFixtures() const;
+	void addPlayedFixture();
 };
 #endif // !__LEAGUE_H
 

@@ -6,7 +6,7 @@ referees(referees), fixtures(nullptr)
 {
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
-	playedFixtures = 0;
+	this->playedFixtures = 0;
 	refIndex = 0;
 	numberOfFixtures = (numberOfTeams - 1) * 2;
 	rotationTeams = new Team*[numberOfTeams]; // makes a copy for rotations
@@ -99,7 +99,9 @@ const Fixture& League::playFixture()
 		return nullptr;
 		TODO : handle in main? */
 
-	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
+	Fixture* fixtureToPlay = fixtures[this->getPlayedFixtures()]; 
+	cout << this->getPlayedFixtures() << "======================================================" << endl;
+	this->addPlayedFixture();
 
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
 	{
@@ -114,16 +116,7 @@ const Fixture& League::playFixture()
 
 void League::setNumberOfReferees(int num)
 {
-	Referee** temp = new Referee*[num];
-	for (int i = 0; i < numberOfReferees; i++)
-	{
-		temp[i] = referees[i];
-		if (i == num-1)
-			break;
-	}
-	delete[] referees;
-	referees = temp;
-	numberOfReferees = num;
+	this->numberOfReferees = num;
 }
 
 void League::addReferee(Referee* referee)
@@ -209,4 +202,14 @@ ostream& operator<<(ostream& os, const League& league)
 bool League::isEnded()
 {
 	return numberOfFixtures == playedFixtures;
+}
+
+int League::getPlayedFixtures() const
+{
+	return playedFixtures;
+}
+
+void League::addPlayedFixture()
+{
+	this->playedFixtures += 1;
 }
