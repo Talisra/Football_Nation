@@ -95,7 +95,6 @@ int main()
 			Player* p = league->getTeams()[i]->getBench()[j];
 			league->getTeams()[i]->addToLineup(p);
 		}
-		//cout << *league->getTeams()[i];
 	}
 	/*
 	 *start season (create season fixtures)

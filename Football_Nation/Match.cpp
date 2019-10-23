@@ -1,6 +1,6 @@
 #include "match.h"
 #include "player.h"
-
+#include "referee.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
 
@@ -109,6 +109,6 @@ int Match::getResult(int index) const
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	os << match.getHomeTeam()->getName() << " VS " << match.getAwayTeam()->getName() << /*"\tReferee: " << match.referee->getName() <<*/ "\t";
+	os << match.getHomeTeam()->getName() << " VS " << match.getAwayTeam()->getName() << "\tReferee: " << match.referee->getName() << "\t";
 	return os;
 }
