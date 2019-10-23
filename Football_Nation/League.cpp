@@ -101,9 +101,7 @@ const Fixture& League::playFixture()
 		return nullptr;
 		TODO : handle in main? */
 
-	Fixture* fixtureToPlay = fixtures[this->getPlayedFixtures()]; 
-	cout << this->getPlayedFixtures() << "======================================================" << endl;
-	this->addPlayedFixture();
+	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
 
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
 	{
