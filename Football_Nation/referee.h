@@ -2,6 +2,7 @@
 #define __REFEREE_H
 
 #include "person.h"
+#include <iostream>
 
 const int MAX_RATING_POSITION = 4;
 
@@ -16,6 +17,7 @@ public:
 	Referee(const char* name, int age, const char* nationality,int rating, int gamesPlayed);
 	void show() const;
 	const Referee& operator++();
+	//friend ostream& operator<<(ostream& os, const Referee& r);
 	Referee(const Referee& other) = delete;
 
 	int getGamesPlayed() const;

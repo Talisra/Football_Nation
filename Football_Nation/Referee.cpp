@@ -19,6 +19,12 @@ const Referee& Referee::operator++()
 	this->gamesPlayed++;
 	return *this;
 }
+/*
+ostream& operator<<(ostream& os, const Referee& r)
+{
+	os << "Name: " << r.getName << ", Age: " << r.getAge << ", Nationality: " << r.getNationality << ", Games played: " << r.getGamesPlayed << ", Rating: " << r.getRating << endl;
+	return os;
+}*/
 
 int Referee::getGamesPlayed() const { return gamesPlayed; }
 int Referee::getRating() const { return rating; }

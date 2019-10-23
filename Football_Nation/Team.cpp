@@ -162,26 +162,18 @@ void Team::setManager(Manager* manager)
 
 void Team::addCoach(Coach* coach)
 {
-	for (int i = 0; i < coachesSize ; i++)
+	for (int i = 0; i < coachesSize ; i++) // return if the coach is already in team
 	{
 		if (coaches[i] == coach)
 			return;
 	}
-	if (coach == nullptr)
+	if (coach == nullptr) // don't add nullptr coach
 		return;
+
 	coach->setTeam(nullptr);
 	if (!fillCoach(coach))
 	{
-		int arr_multiplier = coachesSize * 2;
-		Coach** tempArray = new Coach*[arr_multiplier];
-		for (int i = 0; i < coachesSize; i++)
-		{
-			tempArray[i] = coaches[i];
-		}
-		tempArray[coachesSize] = coach;
-		coachesSize *= 2;
-		delete[] coaches;
-		coaches = tempArray;
+		return;
 	}
 	coach->setTeam(this);
 }
@@ -305,13 +297,11 @@ bool Team::fillBench(Player* player)
 
 bool Team::fillCoach(Coach* coach)
 {
-	for (int i = 0; i < coachesSize; i++)
+	if (coachesSize < COACH_SIZE)
 	{
-		if (coaches[i] == nullptr)
-		{
-			coaches[i] = coach;
-			return true;
-		}
+		coaches[coachesSize] = coach;
+		coachesSize++;
+		return true;
 	}
 	return false;
 }
