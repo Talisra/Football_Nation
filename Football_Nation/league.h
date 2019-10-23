@@ -6,12 +6,13 @@
 #include "team.h"
 #include "referee.h"
 #include "fixture.h"
+#include "player.h"
 
 class Team;
 class Referee;
 class Fixture;
-
 class League
+
 {
 
 private:
@@ -19,6 +20,7 @@ private:
 	int numberOfTeams;
 	int numberOfReferees;
 	int teamIndex;
+	int refIndex;
 	Team** teams;
 	Team** rotationTeams;         //to rotate while keeping the original team order in teams
 	Referee** referees;

@@ -7,6 +7,7 @@ referees(referees), fixtures(nullptr)
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 	playedFixtures = 0;
+	refIndex = 0;
 	numberOfFixtures = (numberOfTeams - 1) * 2;
 	rotationTeams = new Team*[numberOfTeams]; // makes a copy for rotations
 	if (this->teams != nullptr)
@@ -128,14 +129,8 @@ void League::setNumberOfReferees(int num)
 
 void League::addReferee(Referee* referee)
 {
-	for (int i = 0; i < numberOfReferees; i++)
-	{
-		if (referees[i] == nullptr)
-		{
-			referees[i] = referee;
-			return;
-		}
-	}
+	if (refIndex < numberOfReferees)
+		this->referees[refIndex++] = referee;
 }
 
 void League::addTeam(Team* team)
@@ -150,45 +145,34 @@ void League::addTeam(Team* team)
 void League::showMostActiveReferee() const
 {
 	Referee* activeRef = referees[0];
-
 	for (int i = 1; i < numberOfReferees; i++)
 	{
 		activeRef->getGamesPlayed() > referees[i]->getGamesPlayed()  ? 0 : activeRef = referees[i];
 	}
-	cout << &activeRef << endl;
+	cout << activeRef << endl;
 }
 
 void League::showLeadingTeam() const
 {
-	Team* leadingTeam = teams[0];
-
-	for (int i = 1; i < numberOfTeams; i++)
-	{
-		leadingTeam->getPoints() > teams[i]->getPoints() ? 0 : leadingTeam = teams[i];
-	}
-	cout << &leadingTeam << endl;
+	Team* leadingTeam = teams[0]; // leading team will be at first index once the team array is sorted by points
+	cout << "Leading Team: " << leadingTeam->getName() << " with " << leadingTeam->getPoints() << " Points" << endl;
 }
 
 void League::showLosingTeam() const
 {
-	Team* losingTeam = teams[0];
-
-	for (int i = 1; i < numberOfTeams; i++)
-	{
-		losingTeam->getPoints() > teams[i]->getPoints() ? losingTeam = teams[i] : 0;
-	}
-	cout << &losingTeam << endl;
+	Team* losingTeam = teams[numberOfTeams-1]; // last team is on the last index once the team array is sorted by points
+	cout << "Team on last place: " << losingTeam->getName() << " with " << losingTeam->getPoints() << " Points" << endl;
 }
 
 void League::showLeadingScorer() const
 {
 	Player* goalLeader = this->teams[0]->getGoalLeader();
-
-	for (int i = 0; i < numberOfTeams ; i++) 
+	for (int i = 1; i < this->numberOfTeams; i++)
 	{
-		this->teams[i]->getGoalLeader() >= goalLeader ? goalLeader = teams[i]->getGoalLeader() : 0 ;
+		if (teams[i]->getGoalLeader() >= goalLeader)
+			goalLeader = teams[i]->getGoalLeader();
 	}
-	cout << &goalLeader << endl;
+	cout << "Player with most goals in league: " << goalLeader->getName() << " with " << goalLeader->getGoalScored() << " Goals!" << endl;
 }
 
 void League::sortTeams()

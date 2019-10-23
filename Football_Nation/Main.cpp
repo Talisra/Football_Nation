@@ -87,6 +87,8 @@ int main()
 	*/
 	ifstream inputFile("League.txt");
 	League* league = readLeague(inputFile);
+
+	// adding the players from bench to the line up, because PlayMatch() cannot work when the lineup is empty.
 	for (int i = 0; i < league->getNumberOfTeams(); i++)
 	{
 		for (int j = 0; j < LINEUP_SIZE; j++)
@@ -118,7 +120,7 @@ int main()
 	//show League Table
 	//league->sortTeams();
 	cout << *league << endl;
-	/*
+	
 	//show leading team(team)
 	league->showLeadingTeam();
 	//show the loosing team(team)
@@ -127,7 +129,7 @@ int main()
 	league->showLeadingScorer();
 	//show the ref that played the most matches
 	league->showMostActiveReferee();
-	*/
+	
 	inputFile.close();
 	system("pause");
 	return 0;
