@@ -8,6 +8,7 @@ referees(referees), fixtures(nullptr)
 	strcpy(this->name, name);
 	this->playedFixtures = 0;
 	refIndex = 0;
+	referees = new Referee*[numberOfReferees];
 	numberOfFixtures = (numberOfTeams - 1) * 2;
 	rotationTeams = new Team*[numberOfTeams]; // makes a copy for rotations
 	if (this->teams != nullptr)
@@ -25,6 +26,7 @@ referees(referees), fixtures(nullptr)
 
 League::~League()
 {
+	delete[] referees;
 	delete[] teams;
 	delete[] rotationTeams;
 	if (fixtures != nullptr)
@@ -117,12 +119,16 @@ const Fixture& League::playFixture()
 void League::setNumberOfReferees(int num)
 {
 	this->numberOfReferees = num;
+	delete[] referees;
+	referees = new Referee*[num];
+	refIndex = 0;
 }
 
 void League::addReferee(Referee* referee)
 {
 	if (refIndex < numberOfReferees)
-		this->referees[refIndex++] = referee;
+		this->referees[refIndex] = referee;
+	refIndex++;
 }
 
 void League::addTeam(Team* team)
