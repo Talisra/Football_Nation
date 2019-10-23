@@ -87,7 +87,6 @@ int main()
 	*/
 	ifstream inputFile("League.txt");
 	League* league = readLeague(inputFile);
-
 	// adding the players from bench to the line up, because PlayMatch() cannot work when the lineup is empty.
 	for (int i = 0; i < league->getNumberOfTeams(); i++)
 	{
