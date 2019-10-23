@@ -62,7 +62,7 @@ void League::startSeason()
 			Team* team2 = this->rotationTeams[numberOfTeams - 1 - matchNum];
 
 			srand(time(NULL));
-			int	random = numberOfReferees==1? 0 : (rand() % (numberOfReferees -1)) ;
+			int	random = numberOfReferees == 1 ? 0 : (rand() % (numberOfReferees - 1));
 			Referee* ref = this->referees[random];
 			Match* match;
 
@@ -101,7 +101,6 @@ const Fixture& League::playFixture()
 
 	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
 
-	
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
 	{
 		fixtureToPlay->getMatchesInFixture()[i]->playMatch();
@@ -149,7 +148,7 @@ void League::showMostActiveReferee() const
 	{
 		activeRef->getGamesPlayed() > referees[i]->getGamesPlayed()  ? 0 : activeRef = referees[i];
 	}
-	cout << activeRef << endl;
+	cout << "Most Active Referee: " << activeRef->getName() << " with " << activeRef->getGamesPlayed() << " games" << endl;
 }
 
 void League::showLeadingTeam() const
@@ -169,7 +168,7 @@ void League::showLeadingScorer() const
 	Player* goalLeader = this->teams[0]->getGoalLeader();
 	for (int i = 1; i < this->numberOfTeams; i++)
 	{
-		if (teams[i]->getGoalLeader() >= goalLeader)
+		if (*(teams[i]->getGoalLeader()) >= *goalLeader)
 			goalLeader = teams[i]->getGoalLeader();
 	}
 	cout << "Player with most goals in league: " << goalLeader->getName() << " with " << goalLeader->getGoalScored() << " Goals!" << endl;
