@@ -2,6 +2,8 @@
 #define __PERSON_H
 #pragma warning(disable:4996)
 #include <iostream>
+using namespace std;
+
 const int NAME_SIZE = 30;
 class Person
 {

@@ -55,7 +55,6 @@ void League::startSeason()
 
 	for (int i = 0; i < numberOfFixtures; i++)    // i = overall fixtures to create
 	{
-		
 		Match** matchesInFixture = new Match*[numberOfTeams / 2] ;
 
 		for (int matchNum = 0; matchNum < numberOfTeams/2; matchNum++)
@@ -104,6 +103,7 @@ const Fixture& League::playFixture()
 		TODO : handle in main? */
 
 	Fixture* fixtureToPlay = fixtures[playedFixtures++]; 
+	cout <<  "==========================================================\n";
 
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
 	{
@@ -147,7 +147,7 @@ void League::showMostActiveReferee() const
 	{
 		activeRef->getGamesPlayed() > referees[i]->getGamesPlayed()  ? 0 : activeRef = referees[i];
 	}
-	cout << "Most Active Referee: " << activeRef->getName() << " with " << activeRef->getGamesPlayed() << " games" << endl;
+	cout << "Most Active Referee: " << *activeRef << endl;
 }
 
 void League::showLeadingTeam() const
