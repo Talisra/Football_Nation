@@ -65,7 +65,7 @@ void League::startSeason()
 
 			srand(time(NULL));
 			int	random = numberOfReferees == 1 ? 0 : (rand() % (numberOfReferees - 1));
-			Referee* ref = this->referees[random];
+			Referee* ref = referees[random];
 			Match* match;
 
 			i < numberOfFixtures / 2 ? match = new Match(team1, team2, ref) : match = new Match(team2, team1, ref);   //set home/away teams based on fixture number
@@ -102,7 +102,7 @@ const Fixture& League::playFixture()
 		TODO : handle in main? */
 
 	Fixture* fixtureToPlay = fixtures[this->getPlayedFixtures()]; 
-	cout << this->getPlayedFixtures() << "======================================================" << endl;
+	cout << "=======================================================" << endl;
 	this->addPlayedFixture();
 
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
@@ -129,6 +129,7 @@ void League::addReferee(Referee* referee)
 	if (refIndex < numberOfReferees)
 		this->referees[refIndex] = referee;
 	refIndex++;
+
 }
 
 void League::addTeam(Team* team)

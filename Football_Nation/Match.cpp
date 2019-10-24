@@ -6,7 +6,6 @@
 
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee) : homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)
 {
-
 }
 
 void Match::playMatch()
@@ -16,7 +15,7 @@ void Match::playMatch()
 	//each team has the option to score goals in their turn to attack
 	simulateAttack(homeTeam, awayTeam);
 	simulateAttack(awayTeam, homeTeam);
-	++this->referee; //adds a game to the referee
+	++(*this->referee); //adds a game to the referee
 
 	if (getResult(0) == getResult(1))        //Draw - add one point to each team
 	{
@@ -109,6 +108,6 @@ int Match::getResult(int index) const
 
 ostream& operator<<(ostream& os, const Match& match)
 {
-	os << match.getHomeTeam()->getName() << " VS " << match.getAwayTeam()->getName() << /*"\tReferee: " << match.referee->getName() << */"\t";
+	os << match.getHomeTeam()->getName() << " VS " << match.getAwayTeam()->getName() << "\tReferee: " << match.getReferee()->getName() << "\t";
 	return os;
 }

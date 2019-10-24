@@ -10,7 +10,7 @@ Team::Team(const char* name, Manager* manager)
 	strcpy(this->name, name);
 	this->setManager(manager);
 	this->coaches = new Coach*[COACH_SIZE];
-	coachesSize = COACH_SIZE;
+	coachesSize = 0;
 	for (int i = 0; i < coachesSize; i++)
 	{
 		coaches[i] = nullptr;
@@ -100,6 +100,7 @@ void Team::addToLineup(Player* player)
 			benchPlayers[i] = nullptr;
 			alignBench(i);
 			currentBenchSize--;
+			i = currentBenchSize;
 		}
 
 	}
@@ -252,8 +253,10 @@ int Team::getLineupSize() const
 void Team::scoreGoal()
 {
 	srand(time(NULL));
-	int random = rand() % LINEUP_SIZE;
-	++(this->getLineup()[random]);    //add a goal to a player from team
+	int random = rand() % (LINEUP_SIZE-1);
+	Player* scorer = this->getLineup()[random];    //add a goal to a player from team
+	++(*scorer);
+	cout << scorer->getName() <<" WITH THE BALL:" << scorer->getGoalScored()<<endl;
 }
 
 int Team::getPoints()
