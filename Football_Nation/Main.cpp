@@ -92,9 +92,10 @@ int main()
 	{
 		for (int j = 0; j < LINEUP_SIZE; j++)
 		{
-			Player* p = league->getTeams()[i]->getBench()[j];
+			Player* p = league->getTeams()[i]->getBench()[0];
 			league->getTeams()[i]->addToLineup(p);
 		}
+		//cout << *league->getTeams()[i];
 	}
 	/*
 	 *start season (create season fixtures)

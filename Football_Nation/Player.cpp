@@ -104,7 +104,7 @@ ostream& operator<<(ostream& os, const Player& player)
 
 const Player& Player::operator++()
 {
-	this->goalScored++;
+	++goalScored;
 	return *this;
 }
 

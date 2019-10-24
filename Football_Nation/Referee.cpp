@@ -6,7 +6,7 @@ Referee::Referee(const char* name, int age, const char* nationality, int rating 
 	Person(name,age,nationality)
 {
 	setGamesPlayed(gamesPlayed);
-	setRating();
+	//setRating();
 }
 
 void Referee::show() const
@@ -16,7 +16,7 @@ void Referee::show() const
 
 const Referee& Referee::operator++()
 {
-	this->gamesPlayed++;
+	++gamesPlayed;
 	return *this;
 }
 /*
