@@ -1,11 +1,12 @@
 #include "match.h"
 #include "player.h"
 #include "referee.h"
-#include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+
+
 
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee) : homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)
 {
+	
 }
 
 void Match::playMatch()
@@ -67,10 +68,11 @@ void Match::simulateAttack(Team* attackingTeam, Team* defendingTeam)
 
 	for (int i = 0; i < ATTACK_ROUNDS; i++)
 	{
-		srand(time(NULL));
-		int	random = rand() % 200;   //add final
-		//cout << random << " <<----------------------------------------------------------\n";
-		if (attackingScore + random > defendingScore + goalKeepingScore) 
+		std::random_device dev;
+		std::mt19937 rng(dev());
+		std::uniform_int_distribution<std::mt19937::result_type> random(MIN_RANDOM, MAX_RANDOM_ATTACK);
+
+		if ((int)random(rng) + attackingScore > defendingScore + goalKeepingScore)
 		{
 			attackingTeam->scoreGoal();
 			attackingTeam == this->homeTeam ? this->result[0] += 1 : this->result[1] += 1;

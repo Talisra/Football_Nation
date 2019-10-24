@@ -3,8 +3,11 @@
 
 #include <iostream>
 #include "referee.h"
+#include <random>
 using namespace std;
 
+const int MIN_RANDOM = 0;
+const int MAX_RANDOM_ATTACK = 40;
 
 class Coach;
 class Player;

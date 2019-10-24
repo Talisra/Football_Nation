@@ -2,7 +2,6 @@
 #include "coach.h"
 #include "player.h"
 #include "manager.h"
-#include <time.h>
 
 Team::Team(const char* name, Manager* manager)
 {
@@ -252,9 +251,11 @@ int Team::getLineupSize() const
 
 void Team::scoreGoal()
 {
-	srand(time(NULL));
-	int random = rand() % (LINEUP_SIZE-1);
-	Player* scorer = this->getLineup()[random];    //add a goal to a player from team
+	std::random_device dev;
+	std::mt19937 rng(dev());
+	std::uniform_int_distribution<std::mt19937::result_type> random(MIN_RANDOM, LINEUP_SIZE - 1);
+
+	Player* scorer = this->getLineup()[random(rng)];    //add a goal to a player from team
 	++(*scorer);
 }
 

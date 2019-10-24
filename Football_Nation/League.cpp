@@ -1,5 +1,5 @@
 #include "league.h"
-#include <time.h>
+
 
 League::League(const char* name, int numberOfTeams, Team** teams, int numberofreferees, Referee** referees) : numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees),
 referees(referees), fixtures(nullptr)
@@ -63,9 +63,11 @@ void League::startSeason()
 			Team* team1 = this->rotationTeams[matchNum];
 			Team* team2 = this->rotationTeams[numberOfTeams - 1 - matchNum];
 
-			srand(time(NULL));
-			int	random = numberOfReferees == 1 ? 0 : (rand() % (numberOfReferees - 1));
-			Referee* ref = this->referees[random];
+			std::random_device dev;
+			std::mt19937 rng(dev());
+			std::uniform_int_distribution<std::mt19937::result_type> random(MIN_RANDOM, numberOfReferees-1);
+
+			Referee* ref = this->referees[random(rng)];
 			Match* match;
 
 			i < numberOfFixtures / 2 ? match = new Match(team1, team2, ref) : match = new Match(team2, team1, ref);   //set home/away teams based on fixture number
@@ -168,7 +170,7 @@ void League::showLeadingScorer() const
 		if (*(teams[i]->getGoalLeader()) >= *goalLeader)
 			goalLeader = teams[i]->getGoalLeader();
 	}
-	cout << "Player with most goals in league: " << goalLeader->getName() << " with " << goalLeader->getGoalScored() << " Goals!" << endl;
+	cout << "Player with most goals in league: " << goalLeader->getName() << " from " << goalLeader->getTeam()->getName() << " with " << goalLeader->getGoalScored() << " Goals!" << endl;
 }
 
 void League::sortTeams()
