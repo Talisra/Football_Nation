@@ -256,7 +256,6 @@ void Team::scoreGoal()
 	int random = rand() % (LINEUP_SIZE-1);
 	Player* scorer = this->getLineup()[random];    //add a goal to a player from team
 	++(*scorer);
-	cout << scorer->getName() <<" WITH THE BALL:" << scorer->getGoalScored()<<endl;
 }
 
 int Team::getPoints()
