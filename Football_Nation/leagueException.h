@@ -6,7 +6,7 @@ public:
 	leagueException(char* reason):
 		exceptionReason(reason){}
 
-	virtual void show() const = 0;
+	virtual void show() const;
 
 protected:
 	char* exceptionReason;
