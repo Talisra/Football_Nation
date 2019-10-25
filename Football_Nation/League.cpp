@@ -49,9 +49,18 @@ Team** League::getTeams() const
 	return teams;
 }
 
-void League::startSeason()
+void League::startSeason() throw (LeagueException)
 {
 	Fixture** createdFixtures = new Fixture*[numberOfFixtures];
+
+	if (refIndex == 0) 
+	{
+		throw LeagueException("Must have at least one referee to start the season");
+	}
+	if (numberOfTeams % 2 == 1) 
+	{
+		throw LeagueException("Must have an even number of teams");
+	}
 
 	for (int i = 0; i < numberOfFixtures; i++)    // i = overall fixtures to create
 	{

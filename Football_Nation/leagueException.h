@@ -3,27 +3,12 @@
 class LeagueException 
 {
 public:
-	LeagueException(char* reason):
+	LeagueException(const char* reason):
 		exceptionReason(reason){}
 
 	virtual void show() const;
 
 protected:
-	char* exceptionReason;
+	const char* exceptionReason;
 	
-};
-
-class OddNumberOfTeamsException : public LeagueException 
-{
-public:
-	OddNumberOfTeamsException(char* reason) : LeagueException(reason) {}
-
-	virtual void show() const;
-};
-
-class NoRefferesException : public LeagueException
-{
-public:
-	NoRefferesException(char* reason) : LeagueException(reason){}
-	virtual void show() const;
 };
