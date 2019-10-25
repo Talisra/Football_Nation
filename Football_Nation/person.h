@@ -5,6 +5,9 @@
 using namespace std;
 
 const int NAME_SIZE = 30;
+const int MIN_AGE = 17;
+const int MAX_AGE = 75;
+
 class Person
 {
 protected:
@@ -30,4 +33,33 @@ public:
 	void setNationality(const char* newNationality);
 };
 
+class invalidAgeException
+{
+	int age;
+
+public:
+	invalidAgeException(int age) : age(age) {}
+
+	void show() const
+	{
+		cout << "valid age is between " << MIN_AGE << " - " << MAX_AGE << ", cannot create a person " << age << " years old." << endl;
+	}
+
+};
+
+class invalidNameException
+{
+public:
+	invalidNameException() { }
+
+	void show() const
+	{
+		cout << "Name cannot be an empty string" << endl;
+	}
+};
+
 #endif //__PERSON_H
+
+
+	
+

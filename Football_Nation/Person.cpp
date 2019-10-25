@@ -4,9 +4,30 @@
 
 Person::Person(const char* name, int age, const char* nationality)
 {
-	setName(name);
-	setAge(age);
-	setNationality(nationality);
+	try 
+	{
+		setName(name);
+		setAge(age);
+		setNationality(nationality);
+	}
+
+	catch (invalidAgeException& e) 
+	{
+		delete[]name;
+		delete[]nationality;
+		e.show();
+	}
+	catch (invalidNameException& e)
+	{
+		delete[]name;
+		delete[]nationality;
+		e.show();
+	}
+	catch (...) 
+	{
+		delete[]name;
+		delete[]nationality;
+	}
 }
 
 const Person& Person::operator=(const Person& other)
@@ -29,10 +50,6 @@ Person::~Person()
 	delete []nationality;
 }
 
-
-//void Person::show() const {}
-//abstact class - implement in children
-
 //Getters
 
 char* Person::getName() const { return name; }
@@ -41,21 +58,26 @@ char* Person::getNationality() const{ return nationality; }
 
 //Setters
 
-void Person::setName(const char* newName) 
+void Person::setName(const char* newName) throw (invalidNameException)
 {
+	strcmp(newName, "") == 0 ? throw invalidNameException() : 0;
+	newName == nullptr ? throw nullPointerException() : 0;
 	delete []name;
 	name = new char[strlen(newName) + 1];
 	strcpy(name, newName);
 }
-bool Person::setAge(int newAge)
+bool Person::setAge(int newAge) throw (invalidAgeException)
 {
-	if (newAge < 17 || newAge > 75)
-		return false;
+	if (newAge < MIN_AGE || newAge > MAX_AGE)
+	{
+		throw invalidAgeException(newAge);
+	}
 	age = newAge;
 	return true;
 }
 void Person::setNationality(const char* newNationality)
 {
+	newNationality == nullptr ? throw nullPointerException() : 0;
 	delete []nationality;
 	nationality = new char[strlen(newNationality) + 1];
 	strcpy(nationality, newNationality);
