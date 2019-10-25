@@ -124,17 +124,25 @@ void League::setNumberOfReferees(int num)
 	refIndex = 0;
 }
 
-void League::addReferee(Referee* referee)
+void League::addReferee(Referee* referee) throw(NoSpaceException, NullPointerException)
 {
+	if (referee == nullptr)
+		throw NullPointerException("referee");
 	if (refIndex < numberOfReferees)
+	{
 		this->referees[refIndex] = referee;
-	refIndex++;
+		refIndex++;
+	}
+	else
+		throw NoSpaceException("Referees at league", refIndex);
 }
 
-void League::addTeam(Team* team)
+void League::addTeam(Team* team) throw(NoSpaceException, NullPointerException)
 {
+	if (team == nullptr)
+		throw NullPointerException("team");
 	if (teamIndex >= numberOfTeams)
-		return;
+		throw NoSpaceException("Teams in league", teamIndex);
 	teams[teamIndex] = team;
 	rotationTeams[teamIndex] = team;
 	teamIndex++;

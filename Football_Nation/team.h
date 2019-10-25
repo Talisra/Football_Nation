@@ -5,6 +5,7 @@
 #include "referee.h"
 #include <random>
 #include "NoSpaceException.h"
+#include "NullPointerException.h"
 
 using namespace std;
 
