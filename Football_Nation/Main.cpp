@@ -21,8 +21,8 @@ Referee * readReferee(ifstream& inputFile);
 
 int main()
 {
-	/*
-	Referee ref("Cpp", 25, "Language", 1, 0);
+	
+	//Referee ref("Cpp", 25, "Language", 1, 0);
 
 	Player messi("Messi", 32, "Spain", 40, 30, 10, 0, 10000, (Role)0);
 	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0);
@@ -30,6 +30,7 @@ int main()
 	Player m("AAA", 20, "Something", 20, 20, 20, 0, 1000, (Role)2);
 	Coach z("Zidan", 40, "French", (Role)2, nullptr);
 	CoachPlayer strange("Dr. Strange", 30, "British", z, messi);
+	/*
 	Manager a("Arcadi", 60, "Russian", 10);
 	Team t1("Hapoel", &a);
 	++messi;
@@ -87,6 +88,24 @@ int main()
 	*/
 	ifstream inputFile("League.txt");
 	League* league = readLeague(inputFile);
+
+
+	////////////////////////////
+	// EXCEPTION CHECK ZONE   //
+	////////////////////////////
+	try {
+	league->getTeams()[0]->addPlayer(&messi);
+	league->getTeams()[0]->addPlayer(&zlatan);
+	league->getTeams()[0]->addPlayer(&ronaldo);
+	league->getTeams()[0]->addPlayer(&strange);
+	league->getTeams()[0]->addPlayer(&m);
+	}
+	catch (NoSpaceException& e)
+	{
+		e.show();
+	}
+
+
 	// adding the players from bench to the line up, because PlayMatch() cannot work when the lineup is empty.
 	for (int i = 0; i < league->getNumberOfTeams(); i++)
 	{

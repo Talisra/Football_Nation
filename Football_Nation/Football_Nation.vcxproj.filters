@@ -12,6 +12,8 @@
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="Fixture.cpp" />
     <ClCompile Include="League.cpp" />
+    <ClCompile Include="NoSpaceException.cpp" />
+    <ClCompile Include="NullPointerException.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="coach.h" />
@@ -25,5 +27,7 @@
     <ClInclude Include="referee.h" />
     <ClInclude Include="team.h" />
     <ClInclude Include="role.h" />
+    <ClInclude Include="NoSpaceException.h" />
+    <ClInclude Include="NullPointerException.h" />
   </ItemGroup>
 </Project>

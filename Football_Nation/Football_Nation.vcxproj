@@ -125,6 +125,8 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Match.cpp" />
+    <ClCompile Include="NoSpaceException.cpp" />
+    <ClCompile Include="NullPointerException.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Referee.cpp" />
@@ -137,6 +139,8 @@
     <ClInclude Include="league.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="match.h" />
+    <ClInclude Include="NoSpaceException.h" />
+    <ClInclude Include="NullPointerException.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="referee.h" />

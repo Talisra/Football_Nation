@@ -52,7 +52,7 @@ Team::~Team()
 	delete[] benchPlayers;
 }
 
-void Team::addPlayer(Player* player)
+void Team::addPlayer(Player* player) throw (NoSpaceException)
 {
 	if (player != nullptr && player->getTeam() == nullptr) // adds a new player only if it is not null & he is not on any other team.
 	{
@@ -72,7 +72,7 @@ void Team::addPlayer(Player* player)
 			benchSize *= 2;
 			cout << "now bench is size: " << benchSize << endl;
 			*/
-			return; // bench is full
+			throw (NoSpaceException("Bench", currentBenchSize)); // bench is full
 		}
 		currentBenchSize++;
 		player->setTeam(this);
@@ -80,7 +80,7 @@ void Team::addPlayer(Player* player)
 }
 
 
-void Team::addToLineup(Player* player)
+void Team::addToLineup(Player* player) throw (NoSpaceException)
 {
 	if (player == nullptr)
 		return;
@@ -90,7 +90,7 @@ void Team::addToLineup(Player* player)
 			return;
 	}
 	if (currentLineup >= LINEUP_SIZE) //return if the lineup is full
-		return;
+		throw (NoSpaceException("Lineup", currentLineup));
 
 	for (int i = 0; i < currentBenchSize; i++)
 	{
@@ -134,10 +134,12 @@ void Team::removePlayer(Player* player)
 }
 
 
-void Team::removeFromLineup(Player* player)
+void Team::removeFromLineup(Player* player) throw (NoSpaceException)
 {
-	if (player == nullptr && currentBenchSize < BENCH_SIZE) // only remove when there is a room in bench
+	if (player == nullptr)
 		return;
+	if (currentBenchSize >= BENCH_SIZE) // only remove when there is a room in bench
+		throw (NoSpaceException("Bench", currentBenchSize));
 
 	for (int i = 0; i < currentLineup; i++)
 	{
@@ -160,7 +162,7 @@ void Team::setManager(Manager* manager)
 		manager->setTeam(this);
 }
 
-void Team::addCoach(Coach* coach)
+void Team::addCoach(Coach* coach) throw (NoSpaceException)
 {
 	for (int i = 0; i < coachesSize ; i++) // return if the coach is already in team
 	{
@@ -173,7 +175,7 @@ void Team::addCoach(Coach* coach)
 	coach->setTeam(nullptr);
 	if (!fillCoach(coach))
 	{
-		return;
+		throw (NoSpaceException("Coach Position", coachesSize));
 	}
 	coach->setTeam(this);
 }
