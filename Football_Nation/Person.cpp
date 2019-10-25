@@ -1,6 +1,5 @@
 #include "person.h"
 
-//implement show and operator= in non abstract children
 
 Person::Person(const char* name, int age, const char* nationality)
 {
@@ -18,6 +17,12 @@ Person::Person(const char* name, int age, const char* nationality)
 		e.show();
 	}
 	catch (invalidNameException& e)
+	{
+		delete[]name;
+		delete[]nationality;
+		e.show();
+	}
+	catch (NullPointerException& e)
 	{
 		delete[]name;
 		delete[]nationality;
@@ -58,10 +63,10 @@ char* Person::getNationality() const{ return nationality; }
 
 //Setters
 
-void Person::setName(const char* newName) throw (invalidNameException)
+void Person::setName(const char* newName) throw (invalidNameException, NullPointerException)
 {
 	strcmp(newName, "") == 0 ? throw invalidNameException() : 0;
-	newName == nullptr ? throw nullPointerException() : 0;
+	newName == nullptr ? throw NullPointerException("Person::name") : 0;
 	delete []name;
 	name = new char[strlen(newName) + 1];
 	strcpy(name, newName);
@@ -75,9 +80,9 @@ bool Person::setAge(int newAge) throw (invalidAgeException)
 	age = newAge;
 	return true;
 }
-void Person::setNationality(const char* newNationality)
+void Person::setNationality(const char* newNationality) throw (NullPointerException)
 {
-	newNationality == nullptr ? throw nullPointerException() : 0;
+	newNationality == nullptr ? throw NullPointerException("Person::nationality") : 0;
 	delete []nationality;
 	nationality = new char[strlen(newNationality) + 1];
 	strcpy(nationality, newNationality);

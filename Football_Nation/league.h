@@ -52,5 +52,11 @@ public:
 	int getPlayedFixtures() const;
 	void addPlayedFixture();
 };
+
+class oddTeamNumberException 
+{
+public:
+
+};
 #endif // !__LEAGUE_H
 

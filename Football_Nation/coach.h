@@ -24,7 +24,7 @@ public:
 	Team* getCurrentTeam() const;
 
 	void setType(Role type);
-	void setTeam(Team* team);   //should this be const? unsure. should this be bool?
+	void setTeam(Team* team);   
 
 	
 

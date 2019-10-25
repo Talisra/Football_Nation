@@ -122,6 +122,7 @@
     <ClCompile Include="Coach_Player.cpp" />
     <ClCompile Include="Fixture.cpp" />
     <ClCompile Include="League.cpp" />
+    <ClCompile Include="leagueException.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Match.cpp" />
@@ -137,6 +138,7 @@
     <ClInclude Include="coach_player.h" />
     <ClInclude Include="fixture.h" />
     <ClInclude Include="league.h" />
+    <ClInclude Include="leagueException.h" />
     <ClInclude Include="manager.h" />
     <ClInclude Include="match.h" />
     <ClInclude Include="NoSpaceException.h" />

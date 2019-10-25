@@ -2,6 +2,7 @@
 #define __PERSON_H
 #pragma warning(disable:4996)
 #include <iostream>
+#include "NullPointerException.h"
 using namespace std;
 
 const int NAME_SIZE = 30;
