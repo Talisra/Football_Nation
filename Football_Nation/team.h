@@ -62,6 +62,8 @@ private:
 	void alignLineup(int strating_index); //Function to align the lineup array to the left, after removing a player.
 	void alignBench(int starting_index);
 	char* name;
+	Team(const Team& other);
+	const Team& operator=(const Team& other) = delete;
 	Manager* manager;
 	Coach** coaches;
 	Player** benchPlayers;

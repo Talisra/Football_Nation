@@ -7,7 +7,7 @@ using namespace std;
 
 const int NAME_SIZE = 30;
 const int MIN_AGE = 17;
-const int MAX_AGE = 75;
+const int MAX_AGE = 120;
 
 class Person
 {

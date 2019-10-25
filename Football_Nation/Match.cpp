@@ -2,6 +2,8 @@
 #include "player.h"
 #include "referee.h"
 
+#pragma warning(disable:4290)
+
 
 
 Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee) : homeTeam(homeTeam), awayTeam(awayTeam), referee(referee)

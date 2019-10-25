@@ -9,11 +9,6 @@ Referee::Referee(const char* name, int age, const char* nationality, int rating 
 	//setRating();
 }
 
-void Referee::show() const
-{
-
-}
-
 const Referee& Referee::operator++()
 {
 	++gamesPlayed;
@@ -51,4 +46,3 @@ void Referee::setRating()
 	this->rating = counter;
 }
 
-//TODO - add to playmatch increase refferee matches,

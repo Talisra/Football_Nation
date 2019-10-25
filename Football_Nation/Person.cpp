@@ -12,27 +12,24 @@ Person::Person(const char* name, int age, const char* nationality)
 
 	catch (invalidAgeException& e) 
 	{
-		delete[]name;
-		delete[]nationality;
+		delete[]this->name;
 		e.show();
+		throw e;
 	}
 	catch (invalidNameException& e)
 	{
-		delete[]name;
-		delete[]nationality;
+		delete[]this->name;
 		e.show();
+		throw e;
 	}
 	catch (NullPointerException& e)
 	{
-		delete[]name;
-		delete[]nationality;
+		delete[]this->name;
+		delete[]this->nationality;
 		e.show();
+		throw e;
 	}
-	catch (...) 
-	{
-		delete[]name;
-		delete[]nationality;
-	}
+
 }
 
 const Person& Person::operator=(const Person& other)
@@ -66,7 +63,7 @@ char* Person::getNationality() const{ return nationality; }
 void Person::setName(const char* newName) throw (invalidNameException, NullPointerException)
 {
 	strcmp(newName, "") == 0 ? throw invalidNameException() : 0;
-	newName == nullptr ? throw NullPointerException("Person::name") : 0;
+
 	delete []name;
 	name = new char[strlen(newName) + 1];
 	strcpy(name, newName);

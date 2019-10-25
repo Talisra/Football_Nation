@@ -12,7 +12,7 @@ private:
 
 	Team* homeTeam;
 	Team* awayTeam;
-	int result[2] = { 0,0 }; // index 0 = home result, index 1 = away result.
+	int result[NUM_OF_RESULTS] = { 0,0 }; // index 0 = home result, index 1 = away result.
 	Referee* referee;
 	Match(const Match& other) = default;
 	void simulateAttack(Team* attackingTeam, Team* defendingTeam);

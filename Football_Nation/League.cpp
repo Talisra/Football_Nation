@@ -4,8 +4,7 @@
 League::League(const char* name, int numberOfTeams, Team** teams, int numberofreferees, Referee** referees) : numberOfTeams(numberOfTeams), teams(teams), numberOfReferees(numberofreferees),
 referees(referees), fixtures(nullptr)
 {
-	this->name = new char[strlen(name) + 1];
-	strcpy(this->name, name);
+	setName(name);
 	this->playedFixtures = 0;
 	refIndex = 0;
 	referees = new Referee*[numberOfReferees];
@@ -26,6 +25,7 @@ referees(referees), fixtures(nullptr)
 
 League::~League()
 {
+	delete[] name;
 	delete[] referees;
 	delete[] teams;
 	delete[] rotationTeams;
@@ -242,4 +242,10 @@ int League::getPlayedFixtures() const
 void League::addPlayedFixture()
 {
 	this->playedFixtures += 1;
+}
+
+void League::setName(const char* name)
+{
+	this->name = new char[strlen(name) + 1];
+	strcpy(this->name, name);
 }
