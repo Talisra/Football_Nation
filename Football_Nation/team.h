@@ -4,6 +4,8 @@
 #include <iostream>
 #include "referee.h"
 #include <random>
+#include "NoSpaceException.h"
+
 using namespace std;
 
 const int MIN_RANDOM = 0;
