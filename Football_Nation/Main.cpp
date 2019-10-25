@@ -115,14 +115,9 @@ int main()
 	 *start season (create season fixtures)
 	 *create matches and assign referees for each match
 	 */
-	try
-	{
-		league->startSeason();
-	}
-	catch (OddTeamNumberException(league))
-	{
 
-	}
+		league->startSeason();
+
 	/*
 	 *Play matches until the end of the season
 	 *	-assign the match number of goals (random)

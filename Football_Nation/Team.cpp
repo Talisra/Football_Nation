@@ -88,7 +88,7 @@ void Team::addToLineup(Player* player) throw (NoSpaceException, NullPointerExcep
 	{
 		if (lineup[i] == player)
 		{
-			cout << "The player " << player->getName << " is already in the team's lineup!";
+			cout << "The player " << player->getName() << " is already in the team's lineup!";
 			return;
 		}
 	}
@@ -170,7 +170,7 @@ void Team::addCoach(Coach* coach) throw (NoSpaceException, NullPointerException)
 	for (int i = 0; i < coachesSize ; i++) // return if the coach is already in team
 	{
 		if (coaches[i] == coach)
-			cout << "The coach " << coach->getName << " is already in the team's coach position!";
+			cout << "The coach " << coach->getName() << " is already in the team's coach position!";
 	}
 	if (coach == nullptr) // don't add nullptr coach
 		throw NullPointerException("coach");
