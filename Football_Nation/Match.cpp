@@ -9,10 +9,13 @@ Match::Match(Team* homeTeam, Team* awayTeam, Referee* referee) : homeTeam(homeTe
 	
 }
 
-void Match::playMatch()
+void Match::playMatch() throw(PlayMatchException)
 {
-	if (homeTeam->getLineupSize() != LINEUP_SIZE || awayTeam->getLineupSize() != LINEUP_SIZE) //check that the team has enough players in the lineup
-		return;
+	//check that the team has enough players in the lineup
+	if (homeTeam->getLineupSize() != LINEUP_SIZE)
+		throw (PlayMatchException(homeTeam, "Lineup is not full!"));
+	if (awayTeam->getLineupSize() != LINEUP_SIZE)
+		throw (PlayMatchException(awayTeam, "Lineup is not full!"));
 	//each team has the option to score goals in their turn to attack
 	simulateAttack(homeTeam, awayTeam);
 	simulateAttack(awayTeam, homeTeam);

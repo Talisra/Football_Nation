@@ -21,16 +21,15 @@ Referee * readReferee(ifstream& inputFile);
 
 int main()
 {
-	
-	//Referee ref("Cpp", 25, "Language", 1, 0);
-
+	/*
+	Referee ref("Cpp", 25, "Language", 1, 0);
 	Player messi("Messi", 32, "Spain", 40, 30, 10, 0, 10000, (Role)0);
 	Player ronaldo("Ronaldo", 34, "Portugal", 90, 5, 10, 0, 9000, (Role)0);
 	Player zlatan("Zlatan", 39, "God", 100, 20, 10, 0, 8000, (Role)0);
 	Player m("AAA", 20, "Something", 20, 20, 20, 0, 1000, (Role)2);
 	Coach z("Zidan", 40, "French", (Role)2, nullptr);
 	CoachPlayer strange("Dr. Strange", 30, "British", z, messi);
-	/*
+	
 	Manager a("Arcadi", 60, "Russian", 10);
 	Team t1("Hapoel", &a);
 	++messi;
@@ -90,21 +89,6 @@ int main()
 	League* league = readLeague(inputFile);
 
 
-	////////////////////////////
-	// EXCEPTION CHECK ZONE   //
-	////////////////////////////
-	try {
-	league->getTeams()[0]->addPlayer(&messi);
-	league->getTeams()[0]->addPlayer(&zlatan);
-	league->getTeams()[0]->addPlayer(&ronaldo);
-	league->getTeams()[0]->addPlayer(&strange);
-	league->getTeams()[0]->addPlayer(&m);
-	}
-	catch (NoSpaceException& e)
-	{
-		e.show();
-	}
-
 
 	// adding the players from bench to the line up, because PlayMatch() cannot work when the lineup is empty.
 	for (int i = 0; i < league->getNumberOfTeams(); i++)
@@ -112,7 +96,18 @@ int main()
 		for (int j = 0; j < LINEUP_SIZE; j++)
 		{
 			Player* p = league->getTeams()[i]->getBench()[0];
-			league->getTeams()[i]->addToLineup(p);
+			try 
+			{
+				league->getTeams()[i]->addToLineup(p);
+			}
+			catch (NullPointerException & e)
+			{
+				e.show();
+			}
+			catch (NoSpaceException & e)
+			{
+				e.show();
+			}
 		}
 		//cout << *league->getTeams()[i];
 	}
@@ -120,7 +115,14 @@ int main()
 	 *start season (create season fixtures)
 	 *create matches and assign referees for each match
 	 */
-	league->startSeason();
+	try
+	{
+		league->startSeason();
+	}
+	catch (OddTeamNumberException(league))
+	{
+
+	}
 	/*
 	 *Play matches until the end of the season
 	 *	-assign the match number of goals (random)
@@ -169,7 +171,18 @@ League* readLeague(ifstream& inputFile)
 	for (int i = 0; i < numberOfTeams; i++)
 	{
 		Team* team = readTeam(inputFile);
-		newLeague->addTeam(team);
+		try
+		{
+			newLeague->addTeam(team);
+		}
+		catch (NullPointerException & e)
+		{
+			e.show();
+		}
+		catch (NoSpaceException & e)
+		{
+			e.show();
+		}
 	}
 
 	/*Get number of referees*/
@@ -178,7 +191,19 @@ League* readLeague(ifstream& inputFile)
 	for (int i = 0; i < numberOfreferees; i++)
 	{
 		Referee* referee = readReferee(inputFile);
-		newLeague->addReferee(referee);
+		try 
+		{
+			newLeague->addReferee(referee);
+		}
+		catch (NullPointerException & e)
+		{
+			e.show();
+		}
+		catch (NoSpaceException & e)
+		{
+			e.show();
+		}
+
 	}
 
 	return newLeague;
@@ -198,7 +223,18 @@ Team* readTeam(ifstream& inputFile)
 	for (int i = 0; i < numberOfPlayers; i++)
 	{
 		Player* player = readPlayer(inputFile);
-		newTeam->addPlayer(player);
+		try
+		{
+			newTeam->addPlayer(player);
+		}
+		catch (NullPointerException & e)
+		{
+			e.show();
+		}
+		catch (NoSpaceException & e)
+		{
+			e.show();
+		}
 	}
 
 	/*Get number of coaches*/
@@ -207,7 +243,19 @@ Team* readTeam(ifstream& inputFile)
 	for (int i = 0; i < numberOfCoaches; i++)
 	{
 		Coach* coach = readCoach(inputFile);
+		try
+		{
 		newTeam->addCoach(coach);
+		}
+		catch (NullPointerException & e)
+		{
+			e.show();
+		}
+		catch (NoSpaceException & e)
+		{
+			e.show();
+		}
+
 	}
 
 	Manager* manager = readManager(inputFile);

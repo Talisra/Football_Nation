@@ -7,6 +7,8 @@
 #include "referee.h"
 #include "fixture.h"
 #include "player.h"
+#include "NullPointerException.h"
+#include "NoSpaceException.h"
 
 class Team;
 class Referee;

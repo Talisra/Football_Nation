@@ -1,6 +1,7 @@
 #ifndef __MATCH_H
 #define __MATCH_H
 #include "team.h"
+#include "PlayMatchException.h"
 
 const int NUM_OF_RESULTS = 2 ;
 const int ATTACK_ROUNDS = 3 ;
