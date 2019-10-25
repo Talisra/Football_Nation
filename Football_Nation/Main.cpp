@@ -115,9 +115,14 @@ int main()
 	 *start season (create season fixtures)
 	 *create matches and assign referees for each match
 	 */
-
+	try 
+	{
 		league->startSeason();
-
+	}
+	catch (LeagueException& e)
+	{
+		e.show();
+	}
 	/*
 	 *Play matches until the end of the season
 	 *	-assign the match number of goals (random)
@@ -127,8 +132,15 @@ int main()
 	 */
 	do
 	{
-		Fixture fixture = league->playFixture();
-		cout << fixture;
+		try
+		{
+			Fixture fixture = league->playFixture();
+			cout << fixture;
+		}
+		catch (LeagueException& e)
+		{
+			e.show();
+		}
 	} while (!league->isEnded());
 	
 	//end season
