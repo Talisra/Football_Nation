@@ -13,7 +13,7 @@ class Person
 {
 protected:
 	char* name;//[NAME_SIZE];
-	int age;
+	int age; 
 	char* nationality; //[NAME_SIZE] ;
 	Person(const Person& other);
 	virtual ~Person();

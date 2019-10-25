@@ -8,6 +8,7 @@
 #include "NullPointerException.h"
 
 using namespace std;
+#pragma warning(disable:4290)
 
 const int MIN_RANDOM = 0;
 const int MAX_RANDOM_ATTACK = 40;
