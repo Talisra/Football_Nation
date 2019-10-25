@@ -1,9 +1,9 @@
 #include <iostream>
 
-class leagueException 
+class LeagueException 
 {
 public:
-	leagueException(char* reason):
+	LeagueException(char* reason):
 		exceptionReason(reason){}
 
 	virtual void show() const;
@@ -13,17 +13,17 @@ protected:
 	
 };
 
-class oddNumberOfTeamsException : public leagueException 
+class OddNumberOfTeamsException : public LeagueException 
 {
 public:
-	oddNumberOfTeamsException(char* reason) : leagueException(reason) {}
+	OddNumberOfTeamsException(char* reason) : LeagueException(reason) {}
 
 	virtual void show() const;
 };
 
-class noRefferesException : public leagueException
+class NoRefferesException : public LeagueException
 {
 public:
-	noRefferesException(char* reason) : leagueException(reason){}
+	NoRefferesException(char* reason) : LeagueException(reason){}
 	virtual void show() const;
 };

@@ -96,7 +96,7 @@ void League::rotate()//rotates the teams clockwise, team 0 remains
 	rotationTeams[0] = last;
 }
 
-const Fixture& League::playFixture()
+const Fixture& League::playFixture() throw (LeagueException)
 {
 	/*if (isEnded())
 		return nullptr;
@@ -107,7 +107,14 @@ const Fixture& League::playFixture()
 
 	for (int i = 0; i < fixtureToPlay->getGamesInFixture(); i++)
 	{
-		fixtureToPlay->getMatchesInFixture()[i]->playMatch();
+		try
+		{
+			fixtureToPlay->getMatchesInFixture()[i]->playMatch();
+		}
+		catch (PlayMatchException & e)
+		{
+			throw LeagueException(e.getReason());
+		}
 	}
 	fixtureToPlay->setHasPlayed(true);
 	sortTeams();

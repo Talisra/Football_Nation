@@ -1,11 +1,11 @@
 #include "leagueException.h"
 
-void oddNumberOfTeamsException::show() const
+void OddNumberOfTeamsException::show() const
 {
 	std::cout << exceptionReason << ", League must have an even number of teams" << std::endl;
 }
 
-void noRefferesException::show() const
+void NoRefferesException::show() const
 {
 	std::cout << exceptionReason << ", please add referees to the league" << std::endl;
 }
