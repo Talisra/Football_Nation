@@ -61,5 +61,3 @@ void Person::setNationality(const char* newNationality)
 	strcpy(nationality, newNationality);
 }
 
-
-

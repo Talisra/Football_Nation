@@ -1,6 +1,6 @@
 #include "referee.h"
 
-const int Referee::arr[] = {10, 30, 100, 300, 1000 };
+const int Referee::arr[] = {10, 15, 30, 50, 100 };
 
 Referee::Referee(const char* name, int age, const char* nationality, int rating = 0, int gamesPlayed = 0):
 	Person(name,age,nationality)
@@ -19,12 +19,12 @@ const Referee& Referee::operator++()
 	++gamesPlayed;
 	return *this;
 }
-/*
+
 ostream& operator<<(ostream& os, const Referee& r)
 {
-	os << "Name: " << r.getName << ", Age: " << r.getAge << ", Nationality: " << r.getNationality << ", Games played: " << r.getGamesPlayed << ", Rating: " << r.getRating << endl;
+	os << "Name: " << r.getName() << ", Age: " << r.getAge() << ", Nationality: " << r.getNationality() << ", Games played: " << r.getGamesPlayed() << ", Rating: " << r.getRating() << endl;
 	return os;
-}*/
+}
 
 int Referee::getGamesPlayed() const { return gamesPlayed; }
 int Referee::getRating() const { return rating; }
@@ -44,9 +44,9 @@ void Referee::setRating()
 	}
 
 	int counter = 0;
-	while ((getGamesPlayed() < arr[counter]))
+	while (this->getGamesPlayed() < Referee::arr[counter])
 	{
-		counter++;
+		counter += 1;
 	}
 	this->rating = counter;
 }

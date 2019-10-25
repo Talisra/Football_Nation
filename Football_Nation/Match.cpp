@@ -17,6 +17,7 @@ void Match::playMatch()
 	simulateAttack(homeTeam, awayTeam);
 	simulateAttack(awayTeam, homeTeam);
 	++(*this->referee); //adds a game to the referee
+	this->referee->setRating();
 
 	if (getResult(0) == getResult(1))        //Draw - add one point to each team
 	{
