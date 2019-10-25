@@ -9,6 +9,7 @@
 #include "player.h"
 #include "NullPointerException.h"
 #include "NoSpaceException.h"
+#include "leagueException.h"
 
 class Team;
 class Referee;
