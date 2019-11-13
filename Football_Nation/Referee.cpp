@@ -6,7 +6,7 @@ Referee::Referee(const char* name, int age, const char* nationality, int rating 
 	Person(name,age,nationality)
 {
 	setGamesPlayed(gamesPlayed);
-	//setRating();
+	setRating();
 }
 
 const Referee& Referee::operator++()
@@ -39,10 +39,11 @@ void Referee::setRating()
 	}
 
 	int counter = 0;
-	while (this->getGamesPlayed() < Referee::arr[counter])
+	while (this->getGamesPlayed() > Referee::arr[counter])
 	{
 		counter += 1;
+		this->rating = counter;
 	}
-	this->rating = counter;
 }
+
 
